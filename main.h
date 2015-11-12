@@ -124,6 +124,15 @@ void Display :: top (string s)
         cout << reset << endl;
 }   
 
+void Display :: Goback ()
+{
+        cout << blue << " \t\t 1.Go to Previous Menu"<< endl;
+        cout << blue << " \t\t 2.Go to Main Menu"<< endl;
+        cout << reset << endl;
+}
+
+
+
 void Display :: dismainmenu ( string s){
         top(s);
         cout << orange << " \t\t 1. Rent " << endl;
@@ -143,5 +152,11 @@ void Display :: disrent (string s ){
 
 }
 
+void Display :: disrentrec (string s){
+        top(s);
+        cout <<  yellow  << " \t\t Confirmed Selection " << endl;
+	Goback();
+
+}
 
 #endif

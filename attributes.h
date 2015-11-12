@@ -49,6 +49,8 @@ public:
         void top ( string s);
         void dismainmenu( string s);
 	void disrent( string s);
+	void Goback();
+	void disrentrec(string s);
 };
 
 #endif

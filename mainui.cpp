@@ -4,9 +4,8 @@ using namespace std;
 
 int main (){
 	system("clear");
-	int h;
+	int h,g,i;
 	string menu;
-
 	Display a;
 	
 	a.welcome();
@@ -20,7 +19,29 @@ ch1:	system("clear");
 	switch (h)
 	{
 	case 1:
-		a.disrent(" Main Menu --> Rent " );
+welc:		a.disrent(" Main Menu --> Rent " );
+		cout << " choose an option " << endl;
+	        cin>> g;
+		system("clear");
+		if (g==1)
+		{
+			a.disrentrec(" Main Menu --> Rent --> Rec");
+			cout << " choose an option " <<  endl;
+			cin >> i;
+			system ( " clear");
+			if ( i == 1)
+			{
+				goto welc;
+			}
+			else
+			{
+				goto ch1;
+			}
+			
+		}
+		else{
+		//a.disrentnrec
+		}
 		cin.ignore();
 		cout << reset;
 		break;
