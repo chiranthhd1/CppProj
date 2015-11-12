@@ -121,13 +121,14 @@ void Display :: top (string s)
 	cout << " \n\n\n" ;
         cout << blue << " \t\t Expense manager " << endl;
         cout << blue << " \t\t " << s << endl;
+	cout << endl;
         cout << reset << endl;
 }   
 
 void Display :: Goback ()
 {
-        cout << blue << " \t\t 1.Go to Previous Menu"<< endl;
-        cout << blue << " \t\t 2.Go to Main Menu"<< endl;
+        cout << blue << " \t\t 1. Go to Previous Menu"<< endl;
+        cout << blue << " \t\t 2. Go to Main Menu"<< endl;
         cout << reset << endl;
 }
 
@@ -135,14 +136,14 @@ void Display :: Goback ()
 
 void Display :: dismainmenu ( string s){
         top(s);
-        cout << orange << " \t\t 1. Rent " << endl;
-        cout << orange << " \t\t 2. car loan " << endl;
-        cout << orange << " \t\t 3. Electricity and gas " << endl;
-        cout << orange << " \t\t 4. Phone " << endl;
-        cout << orange << " \t\t 5. Insurance " << endl;
-        cout << orange << " \t\t 6. Groceries " << endl;
-        cout << orange << " \t\t 7. Commute " << endl;
-        cout << orange << " \t\t 8. Miscellaneous " << endl;
+        cout << magenta << " \t\t 1. Rent " << endl;
+        cout << magenta << " \t\t 2. car loan " << endl;
+        cout << magenta << " \t\t 3. Electricity and gas " << endl;
+        cout << magenta << " \t\t 4. Phone " << endl;
+        cout << magenta << " \t\t 5. Insurance " << endl;
+        cout << magenta << " \t\t 6. Groceries " << endl;
+        cout << magenta << " \t\t 7. Commute " << endl;
+        cout << magenta << " \t\t 8. Miscellaneous " << endl;
 }
 
 void Display :: disrent (string s ){
@@ -154,7 +155,7 @@ void Display :: disrent (string s ){
 
 void Display :: disrentrec (string s){
         top(s);
-        cout <<  yellow  << " \t\t Confirmed Selection " << endl;
+        cout <<  yellow  << " \t\t Selection Confirmed" << endl<< endl;
 	Goback();
 
 }
