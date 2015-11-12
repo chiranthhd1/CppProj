@@ -51,8 +51,8 @@ public:
 	void disrent( string s);
 	void DisGoback();
 	int Mainmenu();
-	void MainRent();
-	void Goback(string s);
+	int MainRent();
+	int Goback(string s);
 	void disrentrec(string s);
 };
 

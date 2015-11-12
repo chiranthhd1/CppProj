@@ -163,9 +163,10 @@ void Display :: disrentrec (string s){
 int Display :: Mainmenu() {
 	//Display a;
 	int g, h, i;
+	char c;
 	system("clear");
 	dismainmenu("Main Menu");
-	cout << " \n\t\t choose an option ";
+	cout << " \n\t\t choose an option : ";
 	cin >> h;
 	if ( cin.good() == true )
 	{
@@ -191,22 +192,40 @@ int Display :: Mainmenu() {
 		//system("clear");
 		cout << endl;
 		cout << cyan << " \t\t Please enter an Integer value " << endl;
-		cin.ignore();
-		cin.ignore();
-	       	//Mainmenu();
+	//	cin.ignore();
+	//	cin.ignore();
+		cout << " \t\t Press any key to continue : " ;
+		cin >> c;
+		if (c)
+		{
+			cin.ignore();
+			cin.ignore();
+	       	Mainmenu();
+		}
+		else{
 		return -1;
+		}
 
 	}
 
 
 }
-void Display ::  MainRent() {
+int Display ::  MainRent() {
 
 	//Display a;
 	int g;
 	disrent("Main Menu --> Rent ");
 	cout << " \n\t\t choose an option : ";
 	cin >> g;
+	if ( cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+	       	return -1;
+	}
+	else
+	{
 	system("clear");
 	switch (g)
 	{
@@ -226,9 +245,9 @@ void Display ::  MainRent() {
 	}
 	cin.ignore();
 	cout << reset;
-
+	}
 }
-void Display :: Goback(string s) {
+int Display :: Goback(string s) {
 
 	int i;
 	//Display a;
@@ -236,6 +255,15 @@ void Display :: Goback(string s) {
 
 	cout << " \t\t choose an option : ";
 	cin >> i;
+	if ( cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+	       	return -1;
+	}
+	else
+	{
 	system(" clear");
 	if (i == 1)
 	{
@@ -245,8 +273,8 @@ void Display :: Goback(string s) {
 	{
 		Mainmenu();
 	}
+	}
 }
-
 
 
 
