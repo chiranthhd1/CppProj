@@ -49,7 +49,10 @@ public:
         void top ( string s);
         void dismainmenu( string s);
 	void disrent( string s);
-	void Goback();
+	void DisGoback();
+	int Mainmenu();
+	void MainRent();
+	void Goback(string s);
 	void disrentrec(string s);
 };
 

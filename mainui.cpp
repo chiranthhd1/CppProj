@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int Mainmenu();
+/*int Mainmenu();
 void MainRent();
 void Goback(string s);
 
-
+*/
 int main() {
 	system("clear");
 	int h, g, i;
@@ -16,9 +16,9 @@ int main() {
 	a.welcome();
 	cin.ignore();
 	system("clear");
-	Mainmenu();
+	a.Mainmenu();
 }
-
+/*
 int Mainmenu() {
 	Display a;
 	int g, h, i;
@@ -105,5 +105,5 @@ void Goback(string s) {
 		Mainmenu();
 	}
 }
-
+*/
 
