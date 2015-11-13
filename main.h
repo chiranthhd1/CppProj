@@ -108,10 +108,13 @@ void AttributeDB:: SetThreshold()
 
 void Display :: welcome ()
 {
-        cout << red  << " \t\t ****************************************************************************************" << endl;
-        cout << red  << " \t\t ****************************************************************************************" << endl;
-    	cout << red  << " \t\t *************************"<< blue << " Welcome to Expense Manager " << red << "***********************************" << endl;
-        cout << endl;
+	cout << " \n\n\n" ;
+      
+        cout << red  << " \t ****************************************************************************************" << endl;
+    	cout << red  << " \t ****************************"<< blue << " Welcome to Expense Manager " << red << "********************************" << endl;
+
+        cout << red  << " \t ****************************************************************************************" << endl;
+	cout << endl;
         cout << endl;
         cout << reset;
 }
@@ -119,16 +122,20 @@ void Display :: welcome ()
 void Display :: top (string s)
 {   
 	cout << " \n\n\n" ;
-        cout << blue << " \t\t Expense manager " << endl;
-        cout << blue << " \t\t " << s << endl;
+       // cout << blue << " \t\t Expense manager " << endl;
+        cout << red  << " \t ****************************************************************************************" << endl;
+       	cout << red  << " \t **********************i*****"<< blue << " Welcome to Expense Manager " << red << "********************************" << endl;
+        cout << red  << " \t ****************************************************************************************" << endl;
+  
+	cout << blue << " \t (" << s <<")"<< endl;
 	cout << endl;
         cout << reset << endl;
 }   
 
 void Display :: DisGoback ()
 {
-        cout << blue << " \t\t 1. Go to Previous Menu"<< endl;
-        cout << blue << " \t\t 2. Go to Main Menu"<< endl;
+        cout << magenta << " \t\t 1. Go to Previous Menu"<< endl;
+        cout << magenta << " \t\t 2. Go to Main Menu"<< endl;
         cout << reset << endl;
 }
 
@@ -156,17 +163,15 @@ void Display :: disrent (string s ){
 void Display :: disrentrec (string s){
         top(s);
         cout <<  yellow  << " \t\t Selection Confirmed" << endl<< endl;
-	DisGoback();
 
 }
 
 int Display :: Mainmenu() {
-	//Display a;
 	int g, h, i;
 	char c;
 	system("clear");
-	dismainmenu("Main Menu");
-	cout << " \n\t\t choose an option : ";
+	dismainmenu(" Main Menu ");
+	cout << yellow << " \n\t\t choose an option : ";
 	cin >> h;
 	if ( cin.good() == true )
 	{
@@ -178,7 +183,10 @@ int Display :: Mainmenu() {
 			MainRent();
 			break;
 		default:
-			cout << cyan << " \t\t Please provide an input " << endl;
+			cout << " \n\n\n " ;
+			cout << cyan << " \t\t Please provide an valid input " << endl;
+			cout << cyan << " \t\t Press enter to continue " << endl;
+			cin.ignore();
 			cin.ignore();
 			Mainmenu();
 			break;
@@ -214,8 +222,8 @@ int Display ::  MainRent() {
 
 	//Display a;
 	int g;
-	disrent("Main Menu --> Rent ");
-	cout << " \n\t\t choose an option : ";
+	disrent(" Main Menu --> Rent ");
+	cout << yellow << " \n\t\t choose an option : ";
 	cin >> g;
 	if ( cin.good() == false)
 	{
@@ -226,34 +234,32 @@ int Display ::  MainRent() {
 	}
 	else
 	{
-	system("clear");
-	switch (g)
-	{
-
-	case 1:
-		Goback("Main Menu --> Rent --> Rec");
-		break;
-
-	case 2:
-		break;
-
-	default:
-		cout << " \t\t please provide an input " << endl;
-		cin.ignore();
-		cin.ignore();
 		system("clear");
-	}
+		switch (g)
+		{
+
+		case 1:	disrentrec(" Main Menu --> Rent --> Rec ");
+			DisGoback();
+			RentGoback();
+			break;
+
+		case 2:
+			break;
+
+		default:
+			cout << " \t\t please provide an input " << endl;
+			cin.ignore();
+			cin.ignore();
+			system("clear");
+		}
 	cin.ignore();
 	cout << reset;
 	}
 }
-int Display :: Goback(string s) {
+int Display :: RentGoback() {
 
 	int i;
-	//Display a;
-	disrentrec(s);
-
-	cout << " \t\t choose an option : ";
+	cout << yellow << " \t\t choose an option : ";
 	cin >> i;
 	if ( cin.good() == false)
 	{
@@ -264,15 +270,15 @@ int Display :: Goback(string s) {
 	}
 	else
 	{
-	system(" clear");
-	if (i == 1)
-	{
-		MainRent();
-	}
-	else
-	{
-		Mainmenu();
-	}
+		system("clear");
+		if (i == 1)
+		{
+			MainRent();
+		}
+		else
+		{
+			Mainmenu();
+		}
 	}
 }
 

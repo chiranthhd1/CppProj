@@ -52,7 +52,7 @@ public:
 	void DisGoback();
 	int Mainmenu();
 	int MainRent();
-	int Goback(string s);
+	int RentGoback();
 	void disrentrec(string s);
 };
 
