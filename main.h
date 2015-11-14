@@ -292,6 +292,9 @@ int Display::MainRent() {
 		system("clear");
 		top(" Main Menu --> Rent --> Edit");
 		disrent(" Main Menu --> Rent ");
+		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+	
 		cout << yellow << " \n\t\t choose an option : ";
 		cin >> g;
 		// Not Yet working
@@ -333,6 +336,13 @@ int Display::MainRent() {
 				{
 					break;
 				}
+			case 3:
+				MainRent();
+				break;
+			case 4:
+				Mainmenu();
+				break;
+		
 
 			default:
 				cout << " \t\t please provide an input " << endl;
