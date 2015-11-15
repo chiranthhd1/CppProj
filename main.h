@@ -260,7 +260,7 @@ int Display::Mainmenu() {
 
 		case 9:
 			exit(1);
-		default:i
+		default:
 			cout << " \n\n\n ";
 			cout << cyan << " \t\t Please provide an valid input " << endl;
 			cout << cyan << " \t\t Press enter to continue " << endl;
