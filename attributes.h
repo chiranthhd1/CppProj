@@ -19,6 +19,7 @@ public:
 	double GetRent();
 	double SetRent();
 	double GetCarLoan();
+	double SetCarLoan();
 	double GetElecGas();
 	double GetPhone();
 	double GetInsurance();
@@ -58,7 +59,9 @@ public:
 	void disviewoedit();
 	int Mainmenu();
 	int MainRent();
+	int MainCarLoan();
 	int RentGoback();
+	int CarLoanGoback();
 	void disrentrec(string s);
 	void disrentnonrec(string s);
 
