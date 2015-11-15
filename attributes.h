@@ -14,6 +14,9 @@ public:
 	double rent, carloan, elecgas, phone, insurance, groceries, commute, misc, rflag, threshold, ew;
 	Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 80, double  g = 100, double co = 150, double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
 
+//	Attribute *p_rent;
+//	 p_rent = &rent;
+
 
 	string GetUsername();
 	double GetRent();
