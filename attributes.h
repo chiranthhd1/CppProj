@@ -5,6 +5,8 @@
 #include <string>
 #include "color.h"
 #include <cstdlib>
+#include <cmath>
+
 
 using namespace std;
 
@@ -60,6 +62,7 @@ public:
 	void disrent(string s);
 	void DisGoback();
 	void disviewoedit();
+	void Time();
 	int Mainmenu();
 	int MainRent();
 	int MainCarLoan();

@@ -157,6 +157,13 @@ void AttributeDB::SetThreshold()
 {
 }
 
+void Display :: Time()
+{
+time_t now = time(0); 
+//	cout << " Total number of seconds " << now << endl;
+	tm*ltm = localtime(&now);
+	cout << 1 + ltm->tm_mon<< "/" << 1 + ltm->tm_mday << "/" << 1900+ ltm->tm_year << "  " <<  ltm->tm_hour << ":"<< ltm->tm_min << ":" <<  ltm->tm_sec << endl;
+}
 
 void Display::welcome()
 {
@@ -177,6 +184,8 @@ void Display::top(string s)
 	cout << red << " \t ****************************************************************************************" << endl;
 	cout << red << " \t ****************************" << blue << " Welcome to Expense Manager " << red << "********************************"<< endl;
 	cout << red << " \t ****************************************************************************************" << endl;
+	cout << white << " \t\t\t\t\t\t\t\t Date & Time:";
+       	Time();
 	//	string date = system ("date '+ %D %X'") ;
 	//	cout << blue << system ("date '+ %D %X'") << endl;
 
@@ -251,7 +260,7 @@ int Display::Mainmenu() {
 
 		case 9:
 			exit(1);
-		default:
+		default:i
 			cout << " \n\n\n ";
 			cout << cyan << " \t\t Please provide an valid input " << endl;
 			cout << cyan << " \t\t Press enter to continue " << endl;
