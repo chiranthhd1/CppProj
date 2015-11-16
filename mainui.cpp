@@ -12,11 +12,30 @@ int main() {
 	int h, g, i;
 	string menu;
 	Display a;
+	Auth c;
+	int f = 0;
+	while (f < 3)
+	{
+		c.b = c.Maincheck();
+		if (c.b == 0)
+		{
 
-	a.welcome();
-	cin.ignore();
-	system("clear");
-	a.Mainmenu();
+			cin.ignore();
+			system("clear");
+			a.Mainmenu();
+		}
+		else
+		{
+			a.welcome();
+			cout << " \t\t could not authenticate , please re run " << endl;
+		}
+		f++;
+	}
+
+	//a.welcome();
+	//cin.ignore();
+	//system("clear");
+	//a.Mainmenu();
 }
 /*
 int Mainmenu() {

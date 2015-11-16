@@ -10,6 +10,19 @@
 
 using namespace std;
 
+class Auth {
+public:
+	string USERNAME;
+	string PASSWORD;// = "123456";
+	string username, password;
+	Auth(string USER = "sanjan", string PASS = "123456") : USERNAME(USER), PASSWORD(PASS) {}
+	int a, b;
+	int Usepwdcheck();
+	int Maincheck();
+};
+
+
+
 class Attribute {
 public:
 	string username, statement;

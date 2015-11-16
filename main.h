@@ -3,6 +3,60 @@
 
 #include "attributes.h"
 
+
+int Auth::Usepwdcheck()
+{
+	cout << "\n" << "Enter Username : ";
+	cin >> username;
+
+
+	if (username.length() < 4)
+	{
+		cout << "Username length must be atleast 4 characters long." << "\n";
+	}
+	else
+	{
+
+		cout << "Enter Password : ";
+		cin >> password;
+
+
+		if (password.length() < 6)
+		{
+			cout << "\n" << "Password length must be atleast 6 character long." << "\n";
+
+		}
+	}
+	if (username == USERNAME && password == PASSWORD) {
+		return 0;
+	}
+
+	else {
+		cout << "Inserted wrong userid or password try again" << "\n";
+		return 1;
+	}
+
+
+
+}
+
+int Auth::Maincheck()
+{
+	//	do
+	//	{
+	a = Usepwdcheck();
+	if (a == 0) {
+		return 0;
+	}
+	else
+	{
+		return 1;
+
+	}
+	
+
+}
+
 string Attribute::GetUsername()
 {
 	return username;
