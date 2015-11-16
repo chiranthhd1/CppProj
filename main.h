@@ -3,6 +3,10 @@
 
 #include "attributes.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 int Auth::Usepwdcheck()
 {
 	cout << "\n" << "Enter Username : ";
@@ -52,6 +56,7 @@ int Auth::Maincheck()
 		return 1;
 
 	}
+<<<<<<< HEAD
 	//	}while(b < 3)
 
 
@@ -93,6 +98,12 @@ int Auth::Maincheck()
 
 
 }
+=======
+	
+
+}
+
+>>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 string Attribute::GetUsername()
 {
 	return username;

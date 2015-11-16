@@ -13,9 +13,45 @@ int main() {
 	string menu;
 	Display a;
 	Auth c;
+<<<<<<< HEAD
 	a.welcome();
 	int f = 0;
 	while (f < 3)
+=======
+	int f = 0;
+	while (f < 3)
+	{
+		c.b = c.Maincheck();
+		if (c.b == 0)
+		{
+
+			cin.ignore();
+			system("clear");
+			a.Mainmenu();
+		}
+		else
+		{
+			a.welcome();
+			cout << " \t\t could not authenticate , please re run " << endl;
+		}
+		f++;
+	}
+
+	//a.welcome();
+	//cin.ignore();
+	//system("clear");
+	//a.Mainmenu();
+}
+/*
+int Mainmenu() {
+	Display a;
+	int g, h, i;
+	system("clear");
+	a.dismainmenu("Main Menu");
+	cout << " \n\t\t choose an option ";
+	cin >> h;
+	if ( cin.good() == true )
+>>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 	{
 		c.b = c.Maincheck();
 		if (c.b == 0)
