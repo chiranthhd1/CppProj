@@ -5,7 +5,6 @@ using namespace std;
 /*int Mainmenu();
 void MainRent();
 void Goback(string s);
-
 */
 int main() {
 	system("clear");

@@ -56,7 +56,6 @@ int Auth::Maincheck()
 	
 
 
-
 string Attribute::GetUsername()
 {
 	return username;
@@ -84,6 +83,7 @@ double Attribute::GetPhone()
 }
 double Attribute::GetInsurance()
 {
+	cout << cyan << " \t\t Insurance : " << insurance << endl << endl;
 	return insurance;
 }
 
@@ -172,6 +172,29 @@ double Attribute::SetCarLoan() {
 		return 1;
 
 	}
+}
+
+double Attribute::SetInsurance() {
+        Display d;
+        double c, y,z;
+        cout << white << " \t\t Insurance Amount is: " << insurance << endl;
+        cout << blue << " \t\t Please enter the value to be changed :";
+        cin >> c;
+        cout << red << " \t\t Please confirm " << endl;
+        cout << yellow << " \t\t 1.Yes " << endl;
+        cout << yellow << " \t\t 2.No " << yellow;
+        cin >> y;
+
+        if (y == 1)
+        {
+                insurance = c;
+                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+        }
+        else
+        {
+                return 1;
+
+        }
 }
 
 void AttributeDB::SetCarLoan()
@@ -286,6 +309,8 @@ void Display::disrentnonrec(string s) {
 
 }
 
+
+
 void Display::disviewoedit()
 {
 	cout << magenta << " \t\t 1. View " << endl;
@@ -310,6 +335,9 @@ int Display::Mainmenu() {
 			break;
 		case 2:
 			MainCarLoan();
+			break;
+		case 5: 
+			MainInsurance();
 			break;
 
 		case 9:
@@ -583,6 +611,144 @@ int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 	}
 }
 
+int Display::MainInsurance() {
+
+        Attribute a;
+        AttributeDB b;
+        int g, h ,t;
+        top(" Main Menu --> Insurance ");
+        disviewoedit();
+        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+        cout << yellow << " \n\t\t choose an option : ";
+        cin >> h;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // gives the total Insurance
+                system("clear");
+                top(" Main Menu --> Insurance --> View ");
+                a.GetInsurance();
+                DisGoback();
+                InsuranceGoback();
+                break;
+        case 2: system("clear");
+                top(" Main Menu --> Insurance --> Edit");
+		//disrent(" Main Menu --> Insurance ");
+                cout << magenta << " \t\t 1. Insurance Yearly " << endl;
+		cout << magenta << " \t\t 2. Insurance half Yearly " << endl;
+		cout << magenta << " \t\t 3. Insurance Quarterly " << endl;
+		cout << magenta << " \t\t 4. Go to Previous Menu" << endl;
+                cout << magenta << " \t\t 5. Go to Main Menu" << endl;
+
+                cout << yellow << " \n\t\t choose an option : ";
+                cin >> g;
+		 // Not Yet working
+                if (cin.good() == false)
+                {
+                        cout << " \t\t Please enter an integer " << endl;
+                        cin.ignore();
+                        cin.ignore();
+                        break;
+                }
+                else
+                {
+                        system("clear");
+                        switch (g)
+                        {
+			 case 1: top(" Main Menu --> Insurance --> Edit --> Yearly "); //sets Insurance value and its duration (yearly)
+                                a.ew = a.SetInsurance();
+                                if (a.ew != 1)
+                                {
+                                        //DisGoback();
+					 cout << magenta << " \t\t 1. Go to Insurance Page" << endl;
+        				 cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+
+                                        InsuranceGoback();
+                                        break;
+                                }
+                                else
+                                {
+                                        break;
+                                }
+			 case 2: top(" Main Menu --> Insurance --> Edit --> HalfYearly "); //sets Insurance value and its duration (yearly)
+                                a.ew = a.SetInsurance();
+                                if (a.ew != 1)
+                                {
+                                        //DisGoback();
+                                         cout << magenta << " \t\t 1. Go to Insurance page" << endl;
+				        cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+					InsuranceGoback();
+                                        break;
+                                }
+                                else
+                                {
+                                        break;
+                                }
+			 case 3: top(" Main Menu --> Insurance --> Edit --> Quarterly "); //sets Insurance value and its duration (yearly)
+                                a.ew = a.SetInsurance();
+                                if (a.ew != 1)
+                                {
+                                        //DisGoback();
+                                        cout << magenta << " \t\t 1. Go to Insurance page" << endl;
+				        cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+					InsuranceGoback();
+                                        break;
+                                }
+                                else
+                                {
+                                        break;
+                                }
+
+                         case 4:
+                                MainInsurance();
+                                break;
+                         case 5:
+                                Mainmenu();
+                                break;
+
+
+                         default:
+                                cout << " \t\t please provide an input " << endl;
+                                cin.ignore();
+                                cin.ignore();
+                                system("clear");
+                         }
+                         cin.ignore();
+                         cout << reset;
+                }
+        case 3:
+                Mainmenu();
+                break;
+
+        }
+}
+
+int Display::InsuranceGoback() { 
+
+        int i;
+        cout << yellow << " \t\t choose an option: ";
+        cin >> i;
+        if (cin.good() == false)
+        {
+                cout << " \t\t Please enter an integer " << endl;
+                cin.ignore();
+                cin.ignore();
+                return -1;
+        }
+        else
+        {
+                system("clear");
+                if (i == 1)
+                {
+                        MainInsurance();
+                }
+                else
+                {
+                        Mainmenu();
+                }
+        }
+}
 
 
 #endif
