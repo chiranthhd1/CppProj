@@ -3,6 +3,96 @@
 
 #include "attributes.h"
 
+int Auth::Usepwdcheck()
+{
+	cout << "\n" << "Enter Username : ";
+	cin >> username;
+
+
+	if (username.length() < 4)
+	{
+		cout << "Username length must be atleast 4 characters long." << "\n";
+	}
+	else
+	{
+
+		cout << "Enter Password : ";
+		cin >> password;
+
+
+		if (password.length() < 6)
+		{
+			cout << "\n" << "Password length must be atleast 6 character long." << "\n";
+
+		}
+	}
+	if (username == USERNAME && password == PASSWORD) {
+		return 0;
+	}
+
+	else {
+		cout << "Inserted wrong userid or password try again" << "\n";
+		return 1;
+	}
+
+
+
+}
+
+int Auth::Maincheck()
+{
+	//	do
+	//	{
+	a = Usepwdcheck();
+	if (a == 0) {
+		return 0;
+	}
+	else
+	{
+		return 1;
+
+	}
+	//	}while(b < 3)
+
+
+
+
+
+
+	/*int i=0;
+	while(i<3){
+	if(username != USERNAME || password != PASSWORD){
+	a=f(USERNAME,PASSWORD,username,password);
+	if(a==0){
+	break;
+	}
+
+	else{
+
+	i++;
+	}
+	}
+
+
+	}
+	}
+
+
+	if(a==0){
+	cout<<"end";
+
+
+	}
+
+
+
+	return 0;
+	} */
+
+
+
+
+}
 string Attribute::GetUsername()
 {
 	return username;
@@ -16,7 +106,7 @@ double Attribute::GetRent()
 
 double Attribute::GetCarLoan()
 {
-        cout << cyan << " \t\t CarLoan : " << carloan << endl << endl;
+	cout << cyan << " \t\t CarLoan : " << carloan << endl << endl;
 	return carloan;
 }
 
@@ -80,8 +170,8 @@ double Attribute::SetRent()
 	cout << red << " \t\t Please confirm " << endl;
 	//cout << r;
 	cout << magenta << " \t\t 1.Yes " << endl;
-	cout << magenta << " \t\t 2.No " << yellow ;
-//	cout << yellow << " \t\t     :";
+	cout << magenta << " \t\t 2.No " << yellow;
+	//	cout << yellow << " \t\t     :";
 
 	cin >> y;
 	if (y == 1)
@@ -97,28 +187,28 @@ double Attribute::SetRent()
 	}
 }
 
-double Attribute::SetCarLoan(){
-     	Display d;
-        double c, y;
-        cout << green << " \t\t Existing Carloan is : " << carloan << endl;
-        cout << blue << " \t\t Please enter the value of CarLoan :";
-        cin >> c;
-        cout << red << " \t\t Please confirm " << endl;
-        cout << yellow << " \t\t 1.Yes " << endl;
-        cout << yellow << " \t\t 2.No " << yellow ;
-        cin >> y;
-        
-	if (y == 1)
-        	{
-                  carloan = c;
-                  cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-        	}
-        else
-        	{
-                  return 1;
+double Attribute::SetCarLoan() {
+	Display d;
+	double c, y;
+	cout << green << " \t\t Existing Carloan is : " << carloan << endl;
+	cout << blue << " \t\t Please enter the value of CarLoan :";
+	cin >> c;
+	cout << red << " \t\t Please confirm " << endl;
+	cout << yellow << " \t\t 1.Yes " << endl;
+	cout << yellow << " \t\t 2.No " << yellow;
+	cin >> y;
 
-	        }
+	if (y == 1)
+	{
+		carloan = c;
+		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 	}
+	else
+	{
+		return 1;
+
+	}
+}
 
 void AttributeDB::SetCarLoan()
 {
@@ -157,12 +247,12 @@ void AttributeDB::SetThreshold()
 {
 }
 
-void Display :: Time()
+void Display::Time()
 {
-time_t now = time(0); 
-//	cout << " Total number of seconds " << now << endl;
+	time_t now = time(0);
+	//	cout << " Total number of seconds " << now << endl;
 	tm*ltm = localtime(&now);
-	cout << 1 + ltm->tm_mon<< "/" << 1 + ltm->tm_mday << "/" << 1900+ ltm->tm_year << "  " <<  ltm->tm_hour << ":"<< ltm->tm_min << ":" <<  ltm->tm_sec << endl;
+	cout << 1 + ltm->tm_mon << "/" << 1 + ltm->tm_mday << "/" << 1900 + ltm->tm_year << "  " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec << endl;
 }
 
 void Display::welcome()
@@ -182,10 +272,10 @@ void Display::top(string s)
 {
 	cout << " \n\n\n";
 	cout << red << " \t ****************************************************************************************" << endl;
-	cout << red << " \t ****************************" << blue << " Welcome to Expense Manager " << red << "********************************"<< endl;
+	cout << red << " \t ****************************" << blue << " Welcome to Expense Manager " << red << "********************************" << endl;
 	cout << red << " \t ****************************************************************************************" << endl;
 	cout << white << " \t\t\t\t\t\t\t\t Date & Time:";
-       	Time();
+	Time();
 	//	string date = system ("date '+ %D %X'") ;
 	//	cout << blue << system ("date '+ %D %X'") << endl;
 
@@ -255,8 +345,8 @@ int Display::Mainmenu() {
 			MainRent();
 			break;
 		case 2:
-                        MainCarLoan();
-                        break;
+			MainCarLoan();
+			break;
 
 		case 9:
 			exit(1);
@@ -300,7 +390,7 @@ int Display::Mainmenu() {
 	}
 }
 
-int Display::MainRent(){
+int Display::MainRent() {
 
 	Attribute a;
 	AttributeDB b;
@@ -331,7 +421,7 @@ int Display::MainRent(){
 		disrent(" Main Menu --> Rent ");
 		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
 		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
-	
+
 		cout << yellow << " \n\t\t choose an option : ";
 		cin >> g;
 		// Not Yet working
@@ -379,7 +469,7 @@ int Display::MainRent(){
 			case 4:
 				Mainmenu();
 				break;
-		
+
 
 			default:
 				cout << " \t\t please provide an input " << endl;
@@ -423,110 +513,110 @@ int Display::RentGoback() { // This is for go back option for rent menu.
 	}
 }
 
-int Display::MainCarLoan(){
+int Display::MainCarLoan() {
 
-        Attribute a;
-        AttributeDB b;
-        int g, h;
-        top(" Main Menu --> CarLoan ");
-        disviewoedit();
-        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-        cout << yellow << " \n\t\t choose an option : ";
+	Attribute a;
+	AttributeDB b;
+	int g, h;
+	top(" Main Menu --> CarLoan ");
+	disviewoedit();
+	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+	cout << yellow << " \n\t\t choose an option : ";
 
-        cin >> h;
-        system("clear");
-        switch (h)
-        {
+	cin >> h;
+	system("clear");
+	switch (h)
+	{
 
-        case 1: // this vies the value of CarLoan
-                system("clear");
-                top(" Main Menu --> CarLoan --> View ");
-                a.GetCarLoan();
-                DisGoback();
-                CarLoanGoback();
-                break;
-        case 2: system("clear");
-                top(" Main Menu --> CarLoan --> Edit");
-                disrent(" Main Menu --> CarLoan ");
-                cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
-                cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+	case 1: // this vies the value of CarLoan
+		system("clear");
+		top(" Main Menu --> CarLoan --> View ");
+		a.GetCarLoan();
+		DisGoback();
+		CarLoanGoback();
+		break;
+	case 2: system("clear");
+		top(" Main Menu --> CarLoan --> Edit");
+		disrent(" Main Menu --> CarLoan ");
+		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
 
-                cout << yellow << " \n\t\t choose an option : ";
-                cin >> g;
-                // Not Yet working
-                if (cin.good() == false)
-                {
-                        cout << " \t\t Please enter an integer " << endl;
-                        cin.ignore();
-                        cin.ignore();
-                        break;
-                }
-                else
-                {
-                        system("clear");
-                        switch (g)
-                        {
+		cout << yellow << " \n\t\t choose an option : ";
+		cin >> g;
+		// Not Yet working
+		if (cin.good() == false)
+		{
+			cout << " \t\t Please enter an integer " << endl;
+			cin.ignore();
+			cin.ignore();
+			break;
+		}
+		else
+		{
+			system("clear");
+			switch (g)
+			{
 
-                        case 1: top(" Main Menu --> Carloan --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-                                a.ew = a.SetCarLoan();
-                                if (a.ew != 1)
-                                {
-                                        DisGoback();
-                                        CarLoanGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
- 			case 3:
-                                MainCarLoan();
-                                break;
-                        case 4:
-                                Mainmenu();
-                                break;
+			case 1: top(" Main Menu --> Carloan --> Edit --> Rec "); //sets new value of rent and rec flag to 1
+				a.ew = a.SetCarLoan();
+				if (a.ew != 1)
+				{
+					DisGoback();
+					CarLoanGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 3:
+				MainCarLoan();
+				break;
+			case 4:
+				Mainmenu();
+				break;
 
 
-                        default:
-                                cout << " \t\t please provide an input " << endl;
-                                cin.ignore();
-                                cin.ignore();
-                                system("clear");
-                        }
-                        cin.ignore();
-                        cout << reset;
-                }
-        case 3:
-                Mainmenu();
-                break;
+			default:
+				cout << " \t\t please provide an input " << endl;
+				cin.ignore();
+				cin.ignore();
+				system("clear");
+			}
+			cin.ignore();
+			cout << reset;
+		}
+	case 3:
+		Mainmenu();
+		break;
 
-        }
+	}
 }
 
 int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 
-        int i;
-        cout << yellow << " \t\t choose an option : ";
-        cin >> i;
-        if (cin.good() == false)
-        {
-                cout << " \t\t Please enter an integer " << endl;
-                cin.ignore();
-                cin.ignore();
-                return -1;
-        }
-        else
-        {
-                system("clear");
-                if (i == 1)
-                {
-                        MainCarLoan();
-                }
-                else
-                {
-                        Mainmenu();
-                }
-        }
+	int i;
+	cout << yellow << " \t\t choose an option : ";
+	cin >> i;
+	if (cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+		return -1;
+	}
+	else
+	{
+		system("clear");
+		if (i == 1)
+		{
+			MainCarLoan();
+		}
+		else
+		{
+			Mainmenu();
+		}
+	}
 }
 
 
