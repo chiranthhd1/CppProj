@@ -3,30 +3,26 @@
 
 #include "attributes.h"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 int Auth::Usepwdcheck()
 {
-	cout << "\n" << "Enter Username : ";
+	cout << green << " \t\t Enter Username : ";
 	cin >> username;
 
 
 	if (username.length() < 4)
 	{
-		cout << "Username length must be atleast 4 characters long." << "\n";
+		cout << red << " \t\t Username length must be atleast 4 characters long." << "\n";
 	}
 	else
 	{
 
-		cout << "Enter Password : ";
+		cout << green << " \t\t Enter Password : ";
 		cin >> password;
 
 
 		if (password.length() < 6)
 		{
-			cout << "\n" << "Password length must be atleast 6 character long." << "\n";
+			cout << red << " \t\t Password length must be atleast 6 character long." << "\n";
 
 		}
 	}
@@ -35,7 +31,7 @@ int Auth::Usepwdcheck()
 	}
 
 	else {
-		cout << "Inserted wrong userid or password try again" << "\n";
+		cout << red << " \t\t Inserted wrong userid or password try again" << "\n";
 		return 1;
 	}
 
@@ -45,8 +41,6 @@ int Auth::Usepwdcheck()
 
 int Auth::Maincheck()
 {
-	//	do
-	//	{
 	a = Usepwdcheck();
 	if (a == 0) {
 		return 0;
@@ -56,54 +50,13 @@ int Auth::Maincheck()
 		return 1;
 
 	}
-<<<<<<< HEAD
-	//	}while(b < 3)
-
-
-
-
-
-
-	/*int i=0;
-	while(i<3){
-	if(username != USERNAME || password != PASSWORD){
-	a=f(USERNAME,PASSWORD,username,password);
-	if(a==0){
-	break;
-	}
-
-	else{
-
-	i++;
-	}
-	}
-
-
-	}
-	}
-
-
-	if(a==0){
-	cout<<"end";
-
-
-	}
-
-
-
-	return 0;
-	} */
-
-
 
 
 }
-=======
 	
 
-}
 
->>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
+
 string Attribute::GetUsername()
 {
 	return username;

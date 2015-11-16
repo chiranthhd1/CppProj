@@ -10,10 +10,6 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 class Auth {
 public:
 	string USERNAME;
@@ -26,10 +22,6 @@ public:
 };
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4535f53d5eab78c686d79e668bbb44298939fc48
 class Attribute {
 public:
 	string username, statement;
