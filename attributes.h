@@ -23,48 +23,52 @@ public:
 
 
 class Attribute {
-public:
+
 	string username, statement;
-	double rent, carloan, elecgas, phone, insurance, groceries, commute, misc, rflag, threshold, ew;
+	double rent, carloan, elecgas, phone, insurance, groceries, commute, misc, rflag, threshold;
+
+public:
+	
 	Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 800, double  g = 100, double co = 150, 
 double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
 
-	//	Attribute *p_rent;
-	//	 p_rent = &rent;
 
-
+public:
+	double ew;
 	string GetUsername();
+	void SetUsername();
+	double SetRent(int a);
+	double SetCarLoan(int a);
+	double SetElecGas(int a);
+	double SetPhone(int a);
+	double SetInsurance(int a);
+	double SetGroceries(int a);
+	double SetCommute(int a);
+	double SetMisc(int a);
+
+	
 	double GetRent();
-	double SetRent();
 	double GetCarLoan();
-	double SetCarLoan();
 	double GetElecGas();
 	double GetPhone();
 	double GetInsurance();
-	double SetInsurance();
 	double GetGroceries();
 	double GetCommute();
 	double GetMisc();
 	string GetStatement();
 	double GetRecFlag();
 	double GetThreshold();
-	friend class AttributeDB;
-};
+	
+	
+	double CalRent();
+	double CalCarLoan();
+	double CalElecGas();
+	double CalPhone();
+	double CalInsurance();
+	double CalGroceries();
+	double CalCommute();
+	double CalMisc();
 
-class AttributeDB {
-public:
-	void SetUsername();
-	void SetRent();
-	void SetCarLoan();
-	void SetElecGas();
-	void SetPhone();
-	void SetInsurance();
-	void SetGroceries();
-	void SetCommute();
-	void SetMisc();
-	void SetStatement();
-	void SetRecFlag();
-	void SetThreshold();
 
 };
 

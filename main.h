@@ -63,7 +63,7 @@ string Attribute::GetUsername()
 
 double Attribute::GetRent()
 {
-	cout << cyan << " \t\t Rent : " << rent << endl << endl;
+	//cout << cyan << " \t\t Rent : " << rent << endl << endl;
 	return rent;
 }
 
@@ -117,16 +117,20 @@ double Attribute::GetThreshold()
 
 
 
-void AttributeDB::SetUsername()
-{
+//void Attribute::SetUsername()
+//{
 
-}
-void AttributeDB::SetRent()
+//}
+double Attribute::SetRent(int a)
 {
+	cout << "a" << a << endl;
+	//Attribute c;
+	rent = a;
 }
-double Attribute::SetRent()
+double Attribute::CalRent()
 {
 	Display d;
+	//AttributeDB b;
 	double r, y;
 	cout << magenta << " \t\t Existing Rent is : " << rent << endl;
 	cout << red << " \t\t Please enter the value of rent :";
@@ -140,8 +144,9 @@ double Attribute::SetRent()
 	cin >> y;
 	if (y == 1)
 	{
-		rent = r;
-		//cout << r << rent << endl;
+		//rent = r;
+		SetRent(r);
+	//	cout << r << rent << endl;
 		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 	}
 	else
@@ -151,7 +156,13 @@ double Attribute::SetRent()
 	}
 }
 
-double Attribute::SetCarLoan() {
+double Attribute::SetCarLoan(int a)
+{
+	cout << "a" << a << endl;
+	//Attribute c;
+	carloan = a;
+}
+double Attribute::CalCarLoan() {
 	Display d;
 	double c, y;
 	cout << green << " \t\t Existing Carloan is : " << carloan << endl;
@@ -164,7 +175,7 @@ double Attribute::SetCarLoan() {
 
 	if (y == 1)
 	{
-		carloan = c;
+		SetCarLoan(c);
 		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 	}
 	else
@@ -173,8 +184,14 @@ double Attribute::SetCarLoan() {
 
 	}
 }
+double Attribute::SetInsurance(int a)
+{
+	cout << "a" << a << endl;
+	//Attribute c;
+	insurance = a;
+}
 
-double Attribute::SetInsurance() {
+double Attribute::CalInsurance() {
         Display d;
         double c, y,z;
         cout << white << " \t\t Insurance Amount is: " << insurance << endl;
@@ -187,7 +204,7 @@ double Attribute::SetInsurance() {
 
         if (y == 1)
         {
-                insurance = c;
+                SetInsurance(c);
                 cout << yellow << " \t\t Selection Confirmed" << endl << endl;
         }
         else
@@ -197,43 +214,36 @@ double Attribute::SetInsurance() {
         }
 }
 
-void AttributeDB::SetCarLoan()
-{
 
-}
-
-void AttributeDB::SetElecGas()
+double Attribute::SetElecGas(int a)
 {
 }
-void AttributeDB::SetPhone()
-{
-}
-void AttributeDB::SetInsurance()
+double Attribute::SetPhone(int a)
 {
 }
 
-void AttributeDB::SetGroceries()
+double Attribute::SetGroceries(int a)
 {
 }
 
-void AttributeDB::SetCommute()
+double Attribute::SetCommute(int a)
 {
 }
 
-void AttributeDB::SetMisc()
+double Attribute::SetMisc(int a)
 {
 }
 
-void AttributeDB::SetStatement()
+/*double Attribute::SetStatement(int a)
 {
 }
-void AttributeDB::SetRecFlag()
+double Attribute::SetRecFlag()
 {
 }
-void AttributeDB::SetThreshold()
+double Attribute::SetThreshold(int a)
 {
 }
-
+*/
 void Display::Time()
 {
 	time_t now = time(0);
@@ -385,8 +395,9 @@ int Display::Mainmenu() {
 int Display::MainRent() {
 
 	Attribute a;
-	AttributeDB b;
+	//AttributeDB b;
 	int g, h;
+	int rentview;
 	top(" Main Menu --> Rent ");
 	disviewoedit();
 	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
@@ -400,7 +411,8 @@ int Display::MainRent() {
 	case 1: // this vies the value of rent
 		system("clear");
 		top(" Main Menu --> Rent --> View ");
-		a.GetRent();
+		rentview = a.GetRent();
+		cout << cyan << " \t\t Rent : " << rentview << endl << endl;
 		DisGoback();
 		RentGoback();
 		break;
@@ -431,7 +443,7 @@ int Display::MainRent() {
 			{
 
 			case 1:	top(" Main Menu --> Rent --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-				a.ew = a.SetRent();
+				a.ew = a.CalRent();
 				if (a.ew != 1)
 				{
 					DisGoback();
@@ -444,7 +456,7 @@ int Display::MainRent() {
 				}
 
 			case 2: top(" Main Menu --> Rent --> Edit -->Non- Rec ");// //sets new value of rent and rec flag to 1
-				a.ew = a.SetRent();
+				a.ew = a.CalRent();
 				if (a.ew != 1)
 				{
 					DisGoback();
@@ -508,7 +520,7 @@ int Display::RentGoback() { // This is for go back option for rent menu.
 int Display::MainCarLoan() {
 
 	Attribute a;
-	AttributeDB b;
+	//AttributeDB b;
 	int g, h;
 	top(" Main Menu --> CarLoan ");
 	disviewoedit();
@@ -550,7 +562,7 @@ int Display::MainCarLoan() {
 			{
 
 			case 1: top(" Main Menu --> Carloan --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-				a.ew = a.SetCarLoan();
+				a.ew = a.CalCarLoan();
 				if (a.ew != 1)
 				{
 					DisGoback();
@@ -614,7 +626,7 @@ int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 int Display::MainInsurance() {
 
         Attribute a;
-        AttributeDB b;
+        //AttributeDB b;
         int g, h ,t;
         top(" Main Menu --> Insurance ");
         disviewoedit();
@@ -657,7 +669,7 @@ int Display::MainInsurance() {
                         switch (g)
                         {
 			 case 1: top(" Main Menu --> Insurance --> Edit --> Yearly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.SetInsurance();
+                                a.ew = a.CalInsurance();
                                 if (a.ew != 1)
                                 {
                                         //DisGoback();
@@ -672,7 +684,7 @@ int Display::MainInsurance() {
                                         break;
                                 }
 			 case 2: top(" Main Menu --> Insurance --> Edit --> HalfYearly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.SetInsurance();
+                                a.ew = a.CalInsurance();
                                 if (a.ew != 1)
                                 {
                                         //DisGoback();
@@ -686,7 +698,7 @@ int Display::MainInsurance() {
                                         break;
                                 }
 			 case 3: top(" Main Menu --> Insurance --> Edit --> Quarterly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.SetInsurance();
+                                a.ew = a.CalInsurance();
                                 if (a.ew != 1)
                                 {
                                         //DisGoback();
