@@ -1,4 +1,5 @@
+SRC=mainui.cpp main.h color.h attributes.h
 
-main.o : attributes.h color.h  main.h mainui.cpp
-	g++ -Wall -c attributes.h color.h main.h mainui.cpp
+xman.exe: $(SRC)
+	g++ -g mainui.cpp -o xman.exe
 
