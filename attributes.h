@@ -85,9 +85,11 @@ public:
 	int MainRent();
 	int MainCarLoan();
 	int MainInsurance();
+	int MainGroceries();
 	int RentGoback();
 	int CarLoanGoback();
 	int InsuranceGoback();
+	int GroceriesGoback();
 	void disrentrec(string s);
 	void disrentnonrec(string s);
 
