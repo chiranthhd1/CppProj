@@ -125,7 +125,7 @@ double Attribute::SetRent(int a)
 {
 	cout << "a" << a << endl;
 	//Attribute c;
-	rent = a;
+	return rent = a;
 }
 double Attribute::CalRent()
 {
@@ -146,6 +146,7 @@ double Attribute::CalRent()
 	{
 		//rent = r;
 		SetRent(r);
+		GetRent();
 	//	cout << r << rent << endl;
 		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 	}
