@@ -6,7 +6,8 @@
 #include "color.h"
 #include <cstdlib>
 #include <cmath>
-
+#include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -26,12 +27,24 @@ class Attribute {
 
 	string username, statement;
 	double rent, carloan, elecgas, phone, insurance, groceries, commute, misc, rflag, threshold;
+	fstream infile;
 
 public:
 	
-	Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 800, double  g = 100, double co = 150, 
-double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
-
+	//Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 800, double  g = 100, double co = 150, double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
+	Attribute() : infile("xman.txt") {
+		/*GotoLine(1);
+		infile >> rent;
+		infile >> carloan;
+		infile >> elecgas;
+		infile >> phone;
+		infile >> insurance;
+		infile >> groceries;
+		infile >> commute;
+		infile >> misc;
+		infile >> rflag;
+		infile >> threshold;*/
+	}
 
 public:
 	double ew;
@@ -69,7 +82,13 @@ public:
 	double CalCommute();
 	double CalMisc();
 
-
+	fstream& GotoLine(int num) {
+		infile.seekg(std::ios::beg);
+		for (int i = 0; i < num - 1; ++i) {
+			infile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		return infile;
+	}
 };
 
 class Display {
