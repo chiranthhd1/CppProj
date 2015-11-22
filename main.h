@@ -210,7 +210,75 @@ double Attribute::GetThreshold(int a)
 	infile >> threshold;
 	return threshold;
 }
+int Attribute :: GetMonth()
+{
+	string month;
+	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
+	cin.ignore();
+	getline(cin, month);
+	//cin >> month;
+	while(cin.good() == true)
+	{
+	if ( month == "january" || "jan" )
+	{
+		return 1;
+	}
+	if( month == "february" || "feb" )
+	{
+		return 2;
+	}
+	else if( month == "march" || "mar" )
+	{
+		return 3;
+	}
+	else if( month == "april" || "apr" )
+	{
+		return 4;
+	}
 
+	else if( month == "may" || "may" )
+	{
+		return 5;
+	}
+	else if( month == "june" || "jun" )
+	{
+		return 6;
+	}
+	else if( month == "july" || "jul" )
+	{
+		return 7;
+	}
+	else if( month == "august" || "aug" )
+	{
+		return 8;
+	}
+	else if( month == "september" || "sep" )
+	{
+		return 9;
+	}
+	else if( month == "october" || "oct" )
+	{
+		return 10;
+	}
+	else if( month == "november" || "nov" )
+	{
+		return 11;
+	}
+	else if( month == "december" || "dec" )
+	{
+		return 12;
+	}
+	else 
+	{
+		cout << " \t\t Please enter a correct month " <<endl;
+		return 12;
+	}
+
+	}
+
+
+//return month;
+}
 
 
 //void Attribute::SetUsername()
@@ -240,10 +308,11 @@ double Attribute::CalRent()
 {
 	Display d;
 	double r, y;
-	int month;
+	int  month;
 	cout << magenta << " \t\t Please enter the month(1to12) : ";
 	cin >> month;
-	//cout << cyan << " \t\t Rent : " << a.GetRent(month) << endl << endl;
+//	cout << cyan << " \t\t Rent : " << GetRent(month) << endl << endl;
+	//month = GetMonth();
 	cout << magenta << " \t\t Existing Rent is : " << GetRent(month) << endl;
 	cout << red << " \t\t Please enter the value of rent :";
 	cin >> r;
@@ -550,6 +619,8 @@ int Display::MainRent() {
 		top(" Main Menu --> Rent --> View ");
 		cout << magenta << " \t\t Please enter the month(1to12) : ";
 		cin >> month;
+		//month = a.GetMonth();
+	//	cout << "month " << month;
 		cout << cyan << " \t\t Rent : " << a.GetRent(month) << endl << endl;
 		DisGoback();
 		RentGoback();

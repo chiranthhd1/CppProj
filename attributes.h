@@ -72,8 +72,7 @@ public:
 	string GetStatement();
 	double GetRecFlag();
 	double GetThreshold(int a);
-	
-	
+	int GetMonth();	
 	double CalRent();
 	double CalCarLoan();
 	double CalElecGas();
