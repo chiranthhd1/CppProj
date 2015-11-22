@@ -28,12 +28,13 @@ class Attribute {
 	string username, statement;
 	double rent, carloan, elecgas, phone, insurance, groceries, commute, misc, rflag, threshold;
 	fstream infile;
+	ofstream ofile;
 
 public:
 	
 	//Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 800, double  g = 100, double co = 150, double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
-	Attribute() : infile("xman.txt") {
-		/*GotoLine(1);
+	Attribute() : infile("xman.txt"){
+/*		GotoLine(1);
 		infile >> rent;
 		infile >> carloan;
 		infile >> elecgas;
@@ -43,14 +44,14 @@ public:
 		infile >> commute;
 		infile >> misc;
 		infile >> rflag;
-		infile >> threshold;*/
-	}
+		infile >> threshold;
+*/	}
 
 public:
 	double ew;
 	string GetUsername();
 	void SetUsername();
-	double SetRent(int a);
+	void SetRent(int a);
 	double SetCarLoan(int a);
 	double SetElecGas(int a);
 	double SetPhone(int a);
@@ -60,17 +61,17 @@ public:
 	double SetMisc(int a);
 
 	
-	double GetRent();
-	double GetCarLoan();
-	double GetElecGas();
-	double GetPhone();
-	double GetInsurance();
-	double GetGroceries();
-	double GetCommute();
-	double GetMisc();
+	double GetRent(int a);
+	double GetCarLoan(int a);
+	double GetElecGas(int a);
+	double GetPhone(int a);
+	double GetInsurance(int a);
+	double GetGroceries(int a);
+	double GetCommute(int a);
+	double GetMisc(int a);
 	string GetStatement();
 	double GetRecFlag();
-	double GetThreshold();
+	double GetThreshold(int a);
 	
 	
 	double CalRent();

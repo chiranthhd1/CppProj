@@ -61,9 +61,9 @@ string Attribute::GetUsername()
 	return username;
 }
 
-double Attribute::GetRent()
+double Attribute::GetRent(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -77,9 +77,9 @@ double Attribute::GetRent()
 	return rent;
 }
 
-double Attribute::GetCarLoan()
+double Attribute::GetCarLoan(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -93,9 +93,9 @@ double Attribute::GetCarLoan()
 	return carloan;
 }
 
-double Attribute::GetElecGas()
+double Attribute::GetElecGas(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -108,9 +108,9 @@ double Attribute::GetElecGas()
 	infile >> threshold;
 	return elecgas;
 }
-double Attribute::GetPhone()
+double Attribute::GetPhone(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -123,9 +123,9 @@ double Attribute::GetPhone()
 	infile >> threshold;
 	return phone;
 }
-double Attribute::GetInsurance()
+double Attribute::GetInsurance(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -139,9 +139,9 @@ double Attribute::GetInsurance()
 	return insurance;
 }
 
-double Attribute::GetGroceries()
+double Attribute::GetGroceries(int a)
 {	
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -155,9 +155,9 @@ double Attribute::GetGroceries()
 	return groceries;
 }
 
-double Attribute::GetCommute()
+double Attribute::GetCommute(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -171,9 +171,9 @@ double Attribute::GetCommute()
 	return commute;
 }
 
-double Attribute::GetMisc()
+double Attribute::GetMisc(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -195,9 +195,9 @@ double Attribute::GetRecFlag()
 {
 	return rflag;
 }
-double Attribute::GetThreshold()
+double Attribute::GetThreshold(int a)
 {
-	GotoLine(1);
+	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
 	infile >> elecgas;
@@ -217,17 +217,34 @@ double Attribute::GetThreshold()
 //{
 
 //}
-double Attribute::SetRent(int a)
+void Attribute::SetRent( int a)
 {
-	cout << "a" << a << endl;
+	//cout << "a" << a << endl;
 	//Attribute c;
-	return rent = a;
+	//GotoLine(a);
+	//ofile.open("xman.txt");
+	//ofile << renta;
+/*	infile << carloan;
+	infile << elecgas;
+	infile << phone;
+	infile << insurance;
+	infile << groceries;
+	infile << commute;
+	infile << misc;
+	infile << rflag;
+	infile << threshold;
+*/	
+//	return //rent = a;
 }
 double Attribute::CalRent()
 {
 	Display d;
 	double r, y;
-	cout << magenta << " \t\t Existing Rent is : " << rent << endl;
+	int month;
+	cout << magenta << " \t\t Please enter the month(1to12) : ";
+	cin >> month;
+	//cout << cyan << " \t\t Rent : " << a.GetRent(month) << endl << endl;
+	cout << magenta << " \t\t Existing Rent is : " << GetRent(month) << endl;
 	cout << red << " \t\t Please enter the value of rent :";
 	cin >> r;
 	cout << red << " \t\t Please confirm " << endl;
@@ -238,7 +255,7 @@ double Attribute::CalRent()
 	if (y == 1)
 	{
 		SetRent(r);
-		GetRent();
+//		GetRent();
 		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 	}
 	else
@@ -256,7 +273,10 @@ double Attribute::SetCarLoan(int a)
 double Attribute::CalCarLoan() {
 	Display d;
 	double c, y;
-	cout << green << " \t\t Existing Carloan is : " << carloan << endl;
+	int month;
+	cout << magenta << " \t\t Please enter the month(1to12) : ";
+	cin >> month;
+	cout << green << " \t\t Existing Carloan is : " << GetCarLoan(month) << endl;
 	cout << blue << " \t\t Please enter the value of CarLoan :";
 	cin >> c;
 	cout << red << " \t\t Please confirm " << endl;
@@ -284,7 +304,10 @@ double Attribute::SetInsurance(int a)
 double Attribute::CalInsurance() {
         Display d;
         double c, y,z;
-        cout << white << " \t\t Insurance Amount is: " << insurance << endl;
+		int month;
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+        cout << white << " \t\t Insurance Amount is: " << GetInsurance(month) << endl;
         cout << blue << " \t\t Please enter the value to be changed :";
         cin >> c;
         cout << red << " \t\t Please confirm " << endl;
@@ -321,7 +344,10 @@ double Attribute::SetGroceries(int a)
 double Attribute:: CalGroceries() {
         Display d;
         double c, y,z;
-        cout << white << " \t\t Groceries Amount is: " << groceries << endl;
+		int month;
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+        cout << white << " \t\t Groceries Amount is: " << GetGroceries(month) << endl;
         cout << blue << " \t\t Please enter the value to be changed :";
         cin >> c;
         cout << red << " \t\t Please confirm " << endl;
@@ -507,7 +533,7 @@ int Display::Mainmenu() {
 int Display::MainRent() {
 
 	Attribute a;
-	int g, h;
+	int g, h,month;
 	int rentview;
 	top(" Main Menu --> Rent ");
 	disviewoedit();
@@ -522,8 +548,9 @@ int Display::MainRent() {
 	case 1: // this vies the value of rent
 		system("clear");
 		top(" Main Menu --> Rent --> View ");
-		rentview = a.GetRent();
-		cout << cyan << " \t\t Rent : " << rentview << endl << endl;
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t Rent : " << a.GetRent(month) << endl << endl;
 		DisGoback();
 		RentGoback();
 		break;
@@ -631,7 +658,7 @@ int Display::RentGoback() { // This is for go back option for rent menu.
 int Display::MainCarLoan() {
 
 	Attribute a;
-	int g, h;
+	int g, h,month;
 	top(" Main Menu --> CarLoan ");
 	disviewoedit();
 	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
@@ -645,7 +672,9 @@ int Display::MainCarLoan() {
 	case 1: // this vies the value of CarLoan
 		system("clear");
 		top(" Main Menu --> CarLoan --> View ");
-		cout << cyan << " \t\t CarLoan : " << a.GetCarLoan() << endl << endl;
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t CarLoan : " << a.GetCarLoan(month) << endl << endl;
 		DisGoback();
 		CarLoanGoback();
 		break;
@@ -736,7 +765,7 @@ int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 int Display::MainInsurance() {
 
         Attribute a;
-        int g, h ,t;
+        int g, h ,t,month;
         top(" Main Menu --> Insurance ");
         disviewoedit();
         cout << magenta << " \t\t 3. Go to Main Menu" << endl;
@@ -749,7 +778,9 @@ int Display::MainInsurance() {
         case 1: // gives the total Insurance
                 system("clear");
                 top(" Main Menu --> Insurance --> View ");
-				cout << cyan << " \t\t Insurance : " << a.GetInsurance() << endl << endl;
+				cout << magenta << " \t\t Please enter the month(1to12) : ";
+				cin >> month;
+				cout << cyan << " \t\t Insurance : " << a.GetInsurance(month) << endl << endl;
                 DisGoback();
                 InsuranceGoback();
                 break;
@@ -870,7 +901,7 @@ int Display::InsuranceGoback() {
 int Display::MainGroceries() {
 
         Attribute a;
-        int g, h ,t;
+        int g, h ,t,month;
         top(" Main Menu --> Groceries ");
         disviewoedit();
         cout << magenta << " \t\t 3. Go to Main Menu" << endl;
@@ -883,7 +914,9 @@ int Display::MainGroceries() {
         case 1: // gives the total Grocery
                 system("clear");
                 top(" Main Menu --> Groceries --> View ");
-				cout << cyan << " \t\t Groceries : " << a.GetGroceries() << endl << endl;
+				cout << magenta << " \t\t Please enter the month(1to12) : ";
+				cin >> month;
+				cout << cyan << " \t\t Groceries : " << a.GetGroceries(month) << endl << endl;
                 DisGoback();
                 GroceriesGoback();
                 break;
