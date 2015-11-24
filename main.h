@@ -399,9 +399,72 @@ double Attribute::CalInsurance() {
 
 double Attribute::SetElecGas(int a)
 {
+           cout << "\t a" << a << endl;
+           elecgas = a;
+
 }
+
+double Attribute::CalElecGas() {
+        Display d;
+        double c, y,z;
+                int month;
+                cout << magenta << " \t\t Please enter the month(1to12) : ";
+                cin >> month;
+        cout << white << " \t\t Existing ElecGas Amount is: " << GetElecGas(month) << endl;
+        cout << blue << " \t\t Please enter the value to be changed of ElecGas:";
+        cin >> c;
+        cout << red << " \t\t Please confirm " << endl;
+        cout << yellow << " \t\t 1.Yes " << endl;
+        cout << yellow << " \t\t 2.No " << yellow;
+        cin >> y;
+
+        if (y == 1)
+        {
+                SetElecGas(c);
+                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+        }
+        else
+        {
+                return 1;
+
+        }
+}
+
+
 double Attribute::SetPhone(int a)
 {
+           cout << "\t a" << a << endl;
+           phone = a;
+
+}
+
+
+double Attribute::CalPhone()
+{   
+           Display d;
+        double c, y;
+        int month;
+        cout << magenta << " \t\t Please enter the month(1to12) : ";
+        cin >> month;
+        cout << white << " \t\t Phone bill is: " << GetPhone(month) << endl;
+        cout << blue << " \t\t Please enter the value to be changed of Phone Bill :";
+        cin >> c;
+        cout << red << " \t\t Please confirm " << endl;
+        cout << yellow << " \t\t 1.Yes " << endl;
+        cout << yellow << " \t\t 2.No " << yellow;
+        cin >> y;
+
+        if (y == 1)
+        {
+                SetPhone(c);
+                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+        }
+        else
+        {
+                return 1;
+
+        }
+
 }
 
 double Attribute::SetGroceries(int a)
@@ -551,6 +614,13 @@ int Display::Mainmenu() {
 		case 2:
 			MainCarLoan();
 			break;
+                case 3:
+                        MainElecGas();
+                        break;
+                case 4:
+                        MainPhone();
+                        break;
+                
 		case 5: 
 			MainInsurance();
 			break;
@@ -833,6 +903,223 @@ int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 	}
 }
 
+int Display::MainElecGas() {
+
+        Attribute a;
+        int g, h ,t,month;
+        top(" Main Menu --> ElecGas ");
+        disviewoedit();
+        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+        cout << yellow << " \n\t\t choose an option : ";
+        cin >> h;
+        system("clear");
+        switch (h)
+       {
+
+        case 1: // gives the total Amount of Electricity and Gas
+                system("clear");
+                top(" Main Menu --> ElecGas --> View ");
+                                cout << magenta << " \t\t Please enter the month(1to12) : ";
+                                cin >> month;
+                                cout << cyan << " \t\t ElecGas amount : " << a.GetElecGas(month) << endl << endl;
+                DisGoback();
+                ElecGasGoback();
+                break;
+        case 2: system("clear");
+                top(" Main Menu --> ElecGas --> Edit");
+                disrent(" Main Menu --> ElecGas ");
+                cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+                cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+
+                cout << yellow << " \n\t\t choose an option : ";
+                cin >> g;
+                // Not Yet working
+                if (cin.good() == false)
+                {
+                        cout << " \t\t Please enter an integer " << endl;
+                        cin.ignore();
+                        cin.ignore();
+                        break;
+                }
+                else
+                {
+                        system("clear");
+                        switch (g)
+                        {
+
+                        case 1: top(" Main Menu --> ElecGas --> Edit --> Rec "); //sets new value of rent and rec flag to 1
+                                a.ew = a.CalElecGas();
+                                if (a.ew != 1)
+                                {
+                                        DisGoback();
+                                        ElecGasGoback();
+                                        break;
+                                }
+                                else
+                                {
+                                        break;
+                                }
+                        case 3:
+                                MainElecGas();
+                                break;
+                        case 4:
+                                Mainmenu();
+                                break;
+                        default:
+                                cout << " \t\t please provide an input " << endl;
+                                cin.ignore();
+                                cin.ignore();
+                                system("clear");
+                        }
+                        cin.ignore();
+                        cout << reset;
+                }
+        case 3:
+                Mainmenu();
+                break;
+
+        }
+}
+
+int Display::ElecGasGoback() { // This is for go back option for ElecGas menu.
+
+        int i;
+        cout << yellow << " \t\t choose an option : ";
+        cin >> i;
+        if (cin.good() == false)
+        {
+                cout << " \t\t Please enter an integer " << endl;
+                cin.ignore();
+                cin.ignore();
+                return -1;
+        }
+        else
+        {
+                system("clear");
+                if (i == 1)
+                {
+                        MainElecGas();
+                }
+                else
+                {
+                        Mainmenu();
+                }
+        }
+}
+
+int Display::MainPhone() {
+
+        Attribute a;
+        int g, h ,t,month;
+        top(" Main Menu --> Phone ");
+        disviewoedit();
+        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+        cout << yellow << " \n\t\t choose an option : ";
+        cin >> h;
+        system("clear");
+        switch (h)
+       {
+
+        case 1: // gives the total Amount of Phone Bill
+                system("clear");
+                top(" Main Menu --> Phone --> View ");
+                                cout << magenta << " \t\t Please enter the month(1to12) : ";
+                                cin >> month;
+                                cout << cyan << " \t\t Phone : " << a.GetPhone(month) << endl << endl;
+                DisGoback();
+                PhoneGoback();
+                break;
+        case 2: system("clear");
+                top(" Main Menu --> Phone --> Edit");
+                disrent(" Main Menu --> Phone ");
+                cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+                cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+
+                cout << yellow << " \n\t\t choose an option : ";
+                cin >> g;
+                // Not Yet working
+                if (cin.good() == false)
+                {
+                        cout << " \t\t Please enter an integer " << endl;
+                        cin.ignore();
+                        cin.ignore();
+                        break;
+                }
+                else
+                {
+                        system("clear");
+                        switch (g)
+                        {
+
+                        case 1: top(" Main Menu --> Phone --> Edit --> Rec "); //sets new value of rent and rec flag to 1
+                                a.ew = a.CalPhone();
+                                if (a.ew != 1)
+                                {
+                                        DisGoback();
+                                        PhoneGoback();
+                                        break;
+                                }
+                                else
+                                {
+                                        break;
+                                }
+                        case 3:
+                                MainPhone();
+                                break;
+                        case 4:
+                                Mainmenu();
+                                break;
+
+
+                        default:
+                                cout << " \t\t please provide an input " << endl;
+                                cin.ignore();
+                                cin.ignore();
+                                system("clear");
+                        }
+                        cin.ignore();
+                        cout << reset;
+                }
+        case 3:
+                Mainmenu();
+                break;
+
+        }
+}
+
+
+
+
+
+int Display::PhoneGoback() { // This is for go back option for Phone menu.
+
+        int i;
+        cout << yellow << " \t\t choose an option : ";
+        cin >> i;
+        if (cin.good() == false)
+        {
+                cout << " \t\t Please enter an integer " << endl;
+                cin.ignore();
+                cin.ignore();
+                return -1;
+        }
+        else
+        {
+                system("clear");
+                if (i == 1)
+                {
+                        MainPhone();
+                }
+                else
+                {
+                        Mainmenu();
+                }
+        }
+}
+
+
+               
+             
 int Display::MainInsurance() {
 
         Attribute a;

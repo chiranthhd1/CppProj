@@ -103,10 +103,14 @@ public:
 	int Mainmenu();
 	int MainRent();
 	int MainCarLoan();
+        int MainElecGas();
+        int MainPhone();
 	int MainInsurance();
 	int MainGroceries();
 	int RentGoback();
 	int CarLoanGoback();
+        int ElecGasGoback();
+        int PhoneGoback();
 	int InsuranceGoback();
 	int GroceriesGoback();
 	void disrentrec(string s);
