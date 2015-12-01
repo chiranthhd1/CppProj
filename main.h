@@ -1,5 +1,5 @@
-#ifndef _MAIN_H
-#define _MAIN_H
+#ifndef _MAIN2_H
+#define _MAIN2_H
 
 #include "attributes.h"
 
@@ -53,7 +53,7 @@ int Auth::Maincheck()
 
 
 }
-	
+
 
 
 string Attribute::GetUsername()
@@ -61,7 +61,7 @@ string Attribute::GetUsername()
 	return username;
 }
 
-double Attribute::GetRent(int a)
+double Attribute::GetT(int a, int b)
 {
 	GotoLine(a);
 	infile >> rent;
@@ -74,210 +74,110 @@ double Attribute::GetRent(int a)
 	infile >> misc;
 	infile >> rflag;
 	infile >> threshold;
-	return rent;
+	switch (b)
+	{
+	case 1:
+		return rent;
+
+	case 2:
+		return carloan;
+		break;
+	case 3:
+		return elecgas;
+		break;
+
+	case 4:
+		return phone;
+		break;
+
+	case 5:
+		return insurance;
+		break;
+
+	case 6:
+		return groceries;
+		break;
+
+	case 7:
+		return commute;
+		break;
+
+	case 8:
+		return misc;
+		break;
+		/*	case 9:
+		return rent;
+		break;
+
+		case 10:
+		return rent;
+		break;
+
+		*/	default:
+			cout << "try again " << endl;
+			break;
+	}
 }
 
-double Attribute::GetCarLoan(int a)
+int Attribute::GetMonth()
 {
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return carloan;
-}
-
-double Attribute::GetElecGas(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return elecgas;
-}
-double Attribute::GetPhone(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return phone;
-}
-double Attribute::GetInsurance(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return insurance;
-}
-
-double Attribute::GetGroceries(int a)
-{	
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return groceries;
-}
-
-double Attribute::GetCommute(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return commute;
-}
-
-double Attribute::GetMisc(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return misc;
-}
-
-string Attribute::GetStatement()
-{
-	return statement;
-}
-double Attribute::GetRecFlag()
-{
-	return rflag;
-}
-double Attribute::GetThreshold(int a)
-{
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	return threshold;
-}
-int Attribute :: GetMonth()
-{
-	string month;
+	Display d;
+	string mon;
 	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
 	cin.ignore();
-	getline(cin, month);
+	getline(cin, mon);
 	//cin >> month;
-	while(cin.good() == true)
-	{
-	if ( month == "january" || "jan" )
-	{
-		return 1;
-	}
-	if( month == "february" || "feb" )
-	{
-		return 2;
-	}
-	else if( month == "march" || "mar" )
-	{
-		return 3;
-	}
-	else if( month == "april" || "apr" )
-	{
-		return 4;
-	}
 
-	else if( month == "may" || "may" )
-	{
-		return 5;
-	}
-	else if( month == "june" || "jun" )
-	{
-		return 6;
-	}
-	else if( month == "july" || "jul" )
-	{
-		return 7;
-	}
-	else if( month == "august" || "aug" )
-	{
-		return 8;
-	}
-	else if( month == "september" || "sep" )
-	{
-		return 9;
-	}
-	else if( month == "october" || "oct" )
-	{
-		return 10;
-	}
-	else if( month == "november" || "nov" )
-	{
-		return 11;
-	}
-	else if( month == "december" || "dec" )
-	{
-		return 12;
-	}
-	else 
-	{
-		cout << " \t\t Please enter a correct month " <<endl;
-		return 12;
-	}
+	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr" || mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == "decembe") {
+		while (cin.good() == true)
+		{
 
-	}
+			map < string, int > month;
+			month["jan"] = 1;
+			month["january"] = 1;
+
+			month["feb"] = 2;
+			month["february"] = 2;
+
+			month["mar"] = 3;
+			month["march"] = 3;
+
+			month["apr"] = 4;
+			month["april"] = 4;
+
+			month["may"] = 5;
+
+			month["jun"] = 6;
+			month["june"] = 6;
+
+			month["jul"] = 7;
+			month["july"] = 7;
+
+			month["aug"] = 8;
+			month["august"] = 8;
+
+			month["sep"] = 9;
+			month["september"] = 9;
+
+			month["oct"] = 10;
+			month["october"] = 10;
+
+			month["nov"] = 11;
+			month["november"] = 11;
+
+			month["dec"] = 12;
+			month["december"] = 12;
 
 
-//return month;
+			return month[mon];
+		}
+	}
+	else
+	{
+		cout << " Please Try again " << endl;
+		d.Mainmenu();
+	}
+
 }
 
 
@@ -285,14 +185,14 @@ int Attribute :: GetMonth()
 //{
 
 //}
-void Attribute::SetRent( int a)
+void Attribute::SetRent(int a)
 {
 	//cout << "a" << a << endl;
 	//Attribute c;
 	//GotoLine(a);
 	//ofile.open("xman.txt");
 	//ofile << renta;
-/*	infile << carloan;
+	/*	infile << carloan;
 	infile << elecgas;
 	infile << phone;
 	infile << insurance;
@@ -301,31 +201,65 @@ void Attribute::SetRent( int a)
 	infile << misc;
 	infile << rflag;
 	infile << threshold;
-*/	
-//	return //rent = a;
+	*/
+	//	return //rent = a;
 }
-double Attribute::CalRent()
+double Attribute::Cal(int a)
 {
 	Display d;
 	double r, y;
-	int  month;
-	cout << magenta << " \t\t Please enter the month(1to12) : ";
-	cin >> month;
-//	cout << cyan << " \t\t Rent : " << GetRent(month) << endl << endl;
-	//month = GetMonth();
-	cout << magenta << " \t\t Existing Rent is : " << GetRent(month) << endl;
-	cout << red << " \t\t Please enter the value of rent :";
+	int month;
+	month = GetMonth();
+	cout << magenta << " \t\t Existing value is : " << GetT(month, a) << endl;
+	cout << red << " \t\t Please enter the new value :";
 	cin >> r;
-	cout << red << " \t\t Please confirm " << endl;
+	cout << endl << endl;
 	cout << magenta << " \t\t 1.Yes " << endl;
-	cout << magenta << " \t\t 2.No " << yellow;
+	cout << magenta << " \t\t 2.No " << endl << yellow;
 
+	cout << red << " \t\t Please confirm :";
 	cin >> y;
+	cout << endl;
 	if (y == 1)
 	{
-		SetRent(r);
-//		GetRent();
-		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+		switch (a)
+		{
+		case 1:
+			SetRent(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+
+
+		case 2:
+			SetCarLoan(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+		case 3:
+			SetCarLoan(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+
+		case 4:
+			SetPhone(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+
+		case 5:
+			SetInsurance(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+
+		case 6:
+			SetGroceries(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+		case 7:
+			SetCommute(r);
+			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+			return 0;
+
+
+		}
 	}
 	else
 	{
@@ -339,185 +273,37 @@ double Attribute::SetCarLoan(int a)
 	cout << "a" << a << endl;
 	carloan = a;
 }
-double Attribute::CalCarLoan() {
-	Display d;
-	double c, y;
-	int month;
-	cout << magenta << " \t\t Please enter the month(1to12) : ";
-	cin >> month;
-	cout << green << " \t\t Existing Carloan is : " << GetCarLoan(month) << endl;
-	cout << blue << " \t\t Please enter the value of CarLoan :";
-	cin >> c;
-	cout << red << " \t\t Please confirm " << endl;
-	cout << yellow << " \t\t 1.Yes " << endl;
-	cout << yellow << " \t\t 2.No " << yellow;
-	cin >> y;
-
-	if (y == 1)
-	{
-		SetCarLoan(c);
-		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-	}
-	else
-	{
-		return 1;
-
-	}
-}
 double Attribute::SetInsurance(int a)
 {
 	cout << "\t a" << a << endl;
 	insurance = a;
 }
 
-double Attribute::CalInsurance() {
-        Display d;
-        double c, y,z;
-		int month;
-		cout << magenta << " \t\t Please enter the month(1to12) : ";
-		cin >> month;
-        cout << white << " \t\t Insurance Amount is: " << GetInsurance(month) << endl;
-        cout << blue << " \t\t Please enter the value to be changed :";
-        cin >> c;
-        cout << red << " \t\t Please confirm " << endl;
-        cout << yellow << " \t\t 1.Yes " << endl;
-        cout << yellow << " \t\t 2.No " << yellow;
-        cin >> y;
-
-        if (y == 1)
-        {
-                SetInsurance(c);
-                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-        }
-        else
-        {
-                return 1;
-
-        }
-}
-
-
 double Attribute::SetElecGas(int a)
 {
-           cout << "\t a" << a << endl;
-           elecgas = a;
+	cout << "\t a" << a << endl;
+	elecgas = a;
 
 }
-
-double Attribute::CalElecGas() {
-        Display d;
-        double c, y,z;
-                int month;
-                cout << magenta << " \t\t Please enter the month(1to12) : ";
-                cin >> month;
-        cout << white << " \t\t Existing ElecGas Amount is: " << GetElecGas(month) << endl;
-        cout << blue << " \t\t Please enter the value to be changed of ElecGas:";
-        cin >> c;
-        cout << red << " \t\t Please confirm " << endl;
-        cout << yellow << " \t\t 1.Yes " << endl;
-        cout << yellow << " \t\t 2.No " << yellow;
-        cin >> y;
-
-        if (y == 1)
-        {
-                SetElecGas(c);
-                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-        }
-        else
-        {
-                return 1;
-
-        }
-}
-
-
 double Attribute::SetPhone(int a)
 {
-           cout << "\t a" << a << endl;
-           phone = a;
-
-}
-
-
-double Attribute::CalPhone()
-{   
-           Display d;
-        double c, y;
-        int month;
-        cout << magenta << " \t\t Please enter the month(1to12) : ";
-        cin >> month;
-        cout << white << " \t\t Phone bill is: " << GetPhone(month) << endl;
-        cout << blue << " \t\t Please enter the value to be changed of Phone Bill :";
-        cin >> c;
-        cout << red << " \t\t Please confirm " << endl;
-        cout << yellow << " \t\t 1.Yes " << endl;
-        cout << yellow << " \t\t 2.No " << yellow;
-        cin >> y;
-
-        if (y == 1)
-        {
-                SetPhone(c);
-                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-        }
-        else
-        {
-                return 1;
-
-        }
+	cout << "\t a" << a << endl;
+	phone = a;
 
 }
 
 double Attribute::SetGroceries(int a)
 {
-        cout << "\t a" << a << endl;
-        groceries = a;
+	cout << "\t a" << a << endl;
+	groceries = a;
 }
-
-double Attribute:: CalGroceries() {
-        Display d;
-        double c, y,z;
-		int month;
-		cout << magenta << " \t\t Please enter the month(1to12) : ";
-		cin >> month;
-        cout << white << " \t\t Groceries Amount is: " << GetGroceries(month) << endl;
-        cout << blue << " \t\t Please enter the value to be changed :";
-        cin >> c;
-        cout << red << " \t\t Please confirm " << endl;
-        cout << yellow << " \t\t 1.Yes " << endl;
-        cout << yellow << " \t\t 2.No " << yellow;
-        cin >> y;
-
-        if (y == 1)
-        {
-                SetGroceries(c);
-                cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-        }
-        else
-        {
-                return 1;
-
-        }
-}
-
 
 double Attribute::SetCommute(int a)
 {
+	cout << "\t a" << a << endl;
+	groceries = a;
 }
 
-double Attribute::SetMisc(int a)
-{
-}
-
-/*double Attribute::SetStatement(int a)
-{
-}
-double Attribute::SetRecFlag()
-{
-}
-double Attribute::SetThreshold(int a)
-{
-}
-*/
 void Display::Time()
 {
 	time_t now = time(0);
@@ -556,8 +342,14 @@ void Display::DisGoback()
 	cout << magenta << " \t\t 2. Go to Main Menu" << endl;
 	cout << reset << endl;
 }
+void Display::ViewAdd(string s)
+{
+	top(s);
+	cout << magenta << " \t\t 1. View  " << endl;
+	cout << magenta << " \t\t 2. Add  " << endl << endl;
+	cout << magenta << " \t\t Choice : ";
 
-
+}
 
 void Display::dismainmenu(string s) {
 	top(s);
@@ -569,7 +361,8 @@ void Display::dismainmenu(string s) {
 	cout << magenta << " \t\t 6. Groceries " << endl;
 	cout << magenta << " \t\t 7. Commute " << endl;
 	cout << magenta << " \t\t 8. Miscellaneous " << endl;
-	cout << magenta << " \t\t 9. Exit " << endl;
+	cout << magenta << " \t\t 9. Previous Menu " << endl;
+	cout << magenta << " \t\t 10. Exit " << endl;
 	cout << yellow << " \n\t\t choose an option : ";
 
 }
@@ -596,12 +389,12 @@ void Display::disviewoedit()
 	cout << magenta << " \t\t 2. edit " << endl;
 
 }
-
 int Display::Mainmenu() {
 	int g, h, i;
 	char c;
 	system("clear");
-	dismainmenu(" Main Menu ");
+	//dismainmenu(" Main Menu ");
+	ViewAdd(" Main ");
 	cin >> h;
 	if (cin.good() == true)
 	{
@@ -609,25 +402,146 @@ int Display::Mainmenu() {
 		switch (h)
 		{
 		case 1:
-			MainRent();
+			ViewMenu();
+			break;
+		case 2:
+			AddMenu();
+			break;
+		default:
+			cout << " \n\n\n ";
+			cout << cyan << " \t\t Please provide an valid input " << endl;
+			cout << cyan << " \t\t Press enter to continue " << endl;
+			cin.ignore();
+			cin.ignore();
+			Mainmenu();
+			break;
+		}
+		cin.ignore();
+		system("clear");
+	}
+	else
+	{
+		cout << endl;
+		cout << cyan << " \t\t Please enter an Integer value " << endl;
+		cout << cyan << " \t\t Press any key to continue : ";
+		cin.ignore();
+		cin.ignore();
+		cin.ignore();
+		system("./a ");
+	}
+}
+
+int Display::ViewMenu() {
+	int g, h, i;
+	char c;
+	system("clear");
+	dismainmenu(" Main Menu --> View ");
+	cin >> h;
+	if (cin.good() == true)
+	{
+		system(" clear");
+		switch (h)
+		{
+		case 1:
+			MainRent(1);
 			break;
 		case 2:
 			MainCarLoan();
 			break;
-                case 3:
-                        MainElecGas();
-                        break;
-                case 4:
-                        MainPhone();
-                        break;
-                
-		case 5: 
+		case 3:
+			MainElecGas();
+			break;
+		case 4:
+			MainPhone();
+			break;
+
+		case 5:
 			MainInsurance();
 			break;
 		case 6:
 			MainGroceries();
 			break;
+		case 7:
+			MainCommute(1);
+			break;
 
+		case 9:
+			Mainmenu();
+			break;
+		case 10:
+			exit(1);
+		default:
+			cout << " \n\n\n ";
+			cout << cyan << " \t\t Please provide an valid input " << endl;
+			cout << cyan << " \t\t Press enter to continue " << endl;
+			cin.ignore();
+			cin.ignore();
+			Mainmenu();
+			break;
+		}
+		cin.ignore();
+		system("clear");
+	}
+	else
+	{
+		cout << endl;
+		cout << cyan << " \t\t Please enter an Integer value " << endl;
+		cout << cyan << " \t\t Press any key to continue : ";
+		cin.ignore();
+		cin.ignore();
+		cin.ignore();
+		/*	cin >> c;
+		if (c)
+		{
+		cin.ignore();
+		cin.ignore();
+		Mainmenu();
+		}
+		else
+		{
+		exit(1);
+		//		return -1;
+		}
+
+		*/
+		system("./a");
+		//Mainmenu();
+	}
+}
+int Display::AddMenu() {
+	int g, h, i;
+	char c;
+	system("clear");
+	dismainmenu(" Main Menu --> Add ");
+
+	cin >> h;
+	if (cin.good() == true)
+	{
+		system(" clear");
+		switch (h)
+		{
+		case 1:
+			MainRent(2);
+			break;
+		case 2:
+			MainCarLoan();
+			break;
+		case 3:
+			MainElecGas();
+			break;
+		case 4:
+			MainPhone();
+			break;
+
+		case 5:
+			MainInsurance();
+			break;
+		case 6:
+			MainGroceries();
+			break;
+		case 7:
+			MainCommute(2);
+			break;
 		case 9:
 			exit(1);
 		default:
@@ -669,108 +583,91 @@ int Display::Mainmenu() {
 	}
 }
 
-int Display::MainRent() {
+
+int Display::View(string a, int c) {
+
+	Attribute b;
+	int month;
+	system("clear");
+	top(a);
+	month = b.GetMonth();
+	cout << cyan << " \t\t Value : " << b.GetT(month, c) << endl << endl;
+	DisGoback();
+	Goback(1);
+}
+int Display::Add(string s, int b)
+{
+	Attribute a;
+
+	top(s); //sets new value of rent and rec flag to 1
+
+	a.ew = a.Cal(b);
+	if (a.ew != 1)
+	{
+		DisGoback();
+		Goback(2);
+	}
+	else
+	{
+		Mainmenu();
+	}
+
+}
+int Display::MainRent(int h) {
 
 	Attribute a;
-	int g, h,month;
-	int rentview;
-	top(" Main Menu --> Rent ");
-	disviewoedit();
-	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-	cout << yellow << " \n\t\t choose an option : ";
-
-	cin >> h;
 	system("clear");
 	switch (h)
 	{
 
 	case 1: // this vies the value of rent
-		system("clear");
-		top(" Main Menu --> Rent --> View ");
-		cout << magenta << " \t\t Please enter the month(1to12) : ";
-		cin >> month;
-		//month = a.GetMonth();
-	//	cout << "month " << month;
-		cout << cyan << " \t\t Rent : " << a.GetRent(month) << endl << endl;
-		DisGoback();
-		RentGoback();
+		View(" Main Menu --> View --> Rent", 1);
 		break;
 
+	case 2:// this changes or adds the value of rent along with rec o non rec
+		Add(" Main Menu --> Add --> Rent", 1);
+		break;
 
+	default:
+		cout << " \t\t please provide an input " << endl;
+		cin.ignore();
+		cin.ignore();
+		system("clear");
+		cin.ignore();
+		cout << reset;
+		break;
+
+	}
+}
+int Display::MainCommute(int h) {
+
+	Attribute a;
+	system("clear");
+	switch (h)
+	{
+
+	case 1: // this vies the value of rent
+		View(" Main Menu --> View --> Commute", 7);
+		break;
 
 	case 2:// this changes or adds the value of rent along with rec o non rec
+		Add(" Main Menu --> Add --> Commute", 7);
+		break;
+
+	default:
+		cout << " \t\t please provide an input " << endl;
+		cin.ignore();
+		cin.ignore();
 		system("clear");
-		top(" Main Menu --> Rent --> Edit");
-		disrent(" Main Menu --> Rent ");
-		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
-		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
-
-		cout << yellow << " \n\t\t choose an option : ";
-		cin >> g;
-		// Not Yet working
-		if (cin.good() == false)
-		{
-			cout << " \t\t Please enter an integer " << endl;
-			cin.ignore();
-			cin.ignore();
-			break;
-		}
-		else
-		{
-			system("clear");
-			switch (g)
-			{
-
-			case 1:	top(" Main Menu --> Rent --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-				a.ew = a.CalRent();
-				if (a.ew != 1)
-				{
-					DisGoback();
-					RentGoback();
-					break;
-				}
-				else
-				{
-					break;
-				}
-
-			case 2: top(" Main Menu --> Rent --> Edit -->Non- Rec ");// //sets new value of rent and rec flag to 1
-				a.ew = a.CalRent();
-				if (a.ew != 1)
-				{
-					DisGoback();
-					RentGoback();
-					break;
-				}
-				else
-				{
-					break;
-				}
-			case 3:
-				MainRent();
-				break;
-			case 4:
-				Mainmenu();
-				break;
-
-
-			default:
-				cout << " \t\t please provide an input " << endl;
-				cin.ignore();
-				cin.ignore();
-				system("clear");
-			}
-			cin.ignore();
-			cout << reset;
-		}
-	case 3:
-		Mainmenu();
+		cin.ignore();
+		cout << reset;
 		break;
 
 	}
 }
 
-int Display::RentGoback() { // This is for go back option for rent menu.
+
+int Display::Goback(int j) { // This is for go back option for rent menu.
 
 	int i;
 	cout << yellow << " \t\t choose an option : ";
@@ -785,9 +682,13 @@ int Display::RentGoback() { // This is for go back option for rent menu.
 	else
 	{
 		system("clear");
-		if (i == 1)
+		if (i == 1 && j == 1)
 		{
-			MainRent();
+			ViewMenu();
+		}
+		else if (i == 1 && j == 2)
+		{
+			AddMenu();
 		}
 		else
 		{
@@ -796,10 +697,12 @@ int Display::RentGoback() { // This is for go back option for rent menu.
 	}
 }
 
+
+
 int Display::MainCarLoan() {
 
 	Attribute a;
-	int g, h,month;
+	int g, h, month;
 	top(" Main Menu --> CarLoan ");
 	disviewoedit();
 	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
@@ -815,7 +718,7 @@ int Display::MainCarLoan() {
 		top(" Main Menu --> CarLoan --> View ");
 		cout << magenta << " \t\t Please enter the month(1to12) : ";
 		cin >> month;
-		cout << cyan << " \t\t CarLoan : " << a.GetCarLoan(month) << endl << endl;
+		cout << cyan << " \t\t CarLoan : " << a.GetT(month, 2) << endl << endl;
 		DisGoback();
 		CarLoanGoback();
 		break;
@@ -842,7 +745,7 @@ int Display::MainCarLoan() {
 			{
 
 			case 1: top(" Main Menu --> Carloan --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-				a.ew = a.CalCarLoan();
+				a.ew = a.Cal(2);
 				if (a.ew != 1)
 				{
 					DisGoback();
@@ -905,186 +808,186 @@ int Display::CarLoanGoback() { // This is for go back option for Carloan menu.
 
 int Display::MainElecGas() {
 
-        Attribute a;
-        int g, h ,t,month;
-        top(" Main Menu --> ElecGas ");
-        disviewoedit();
-        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-        cout << yellow << " \n\t\t choose an option : ";
-        cin >> h;
-        system("clear");
-        switch (h)
-       {
+	Attribute a;
+	int g, h, t, month;
+	top(" Main Menu --> ElecGas ");
+	disviewoedit();
+	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+	cout << yellow << " \n\t\t choose an option : ";
+	cin >> h;
+	system("clear");
+	switch (h)
+	{
 
-        case 1: // gives the total Amount of Electricity and Gas
-                system("clear");
-                top(" Main Menu --> ElecGas --> View ");
-                                cout << magenta << " \t\t Please enter the month(1to12) : ";
-                                cin >> month;
-                                cout << cyan << " \t\t ElecGas amount : " << a.GetElecGas(month) << endl << endl;
-                DisGoback();
-                ElecGasGoback();
-                break;
-        case 2: system("clear");
-                top(" Main Menu --> ElecGas --> Edit");
-                disrent(" Main Menu --> ElecGas ");
-                cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
-                cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+	case 1: // gives the total Amount of Electricity and Gas
+		system("clear");
+		top(" Main Menu --> ElecGas --> View ");
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t ElecGas amount : " << a.GetT(month, 3) << endl << endl;
+		DisGoback();
+		ElecGasGoback();
+		break;
+	case 2: system("clear");
+		top(" Main Menu --> ElecGas --> Edit");
+		disrent(" Main Menu --> ElecGas ");
+		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
 
-                cout << yellow << " \n\t\t choose an option : ";
-                cin >> g;
-                // Not Yet working
-                if (cin.good() == false)
-                {
-                        cout << " \t\t Please enter an integer " << endl;
-                        cin.ignore();
-                        cin.ignore();
-                        break;
-                }
-                else
-                {
-                        system("clear");
-                        switch (g)
-                        {
+		cout << yellow << " \n\t\t choose an option : ";
+		cin >> g;
+		// Not Yet working
+		if (cin.good() == false)
+		{
+			cout << " \t\t Please enter an integer " << endl;
+			cin.ignore();
+			cin.ignore();
+			break;
+		}
+		else
+		{
+			system("clear");
+			switch (g)
+			{
 
-                        case 1: top(" Main Menu --> ElecGas --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-                                a.ew = a.CalElecGas();
-                                if (a.ew != 1)
-                                {
-                                        DisGoback();
-                                        ElecGasGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
-                        case 3:
-                                MainElecGas();
-                                break;
-                        case 4:
-                                Mainmenu();
-                                break;
-                        default:
-                                cout << " \t\t please provide an input " << endl;
-                                cin.ignore();
-                                cin.ignore();
-                                system("clear");
-                        }
-                        cin.ignore();
-                        cout << reset;
-                }
-        case 3:
-                Mainmenu();
-                break;
+			case 1: top(" Main Menu --> ElecGas --> Edit --> Rec "); //sets new value of rent and rec flag to 1
+				a.ew = a.Cal(3);
+				if (a.ew != 1)
+				{
+					DisGoback();
+					ElecGasGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 3:
+				MainElecGas();
+				break;
+			case 4:
+				Mainmenu();
+				break;
+			default:
+				cout << " \t\t please provide an input " << endl;
+				cin.ignore();
+				cin.ignore();
+				system("clear");
+			}
+			cin.ignore();
+			cout << reset;
+		}
+	case 3:
+		Mainmenu();
+		break;
 
-        }
+	}
 }
 
 int Display::ElecGasGoback() { // This is for go back option for ElecGas menu.
 
-        int i;
-        cout << yellow << " \t\t choose an option : ";
-        cin >> i;
-        if (cin.good() == false)
-        {
-                cout << " \t\t Please enter an integer " << endl;
-                cin.ignore();
-                cin.ignore();
-                return -1;
-        }
-        else
-        {
-                system("clear");
-                if (i == 1)
-                {
-                        MainElecGas();
-                }
-                else
-                {
-                        Mainmenu();
-                }
-        }
+	int i;
+	cout << yellow << " \t\t choose an option : ";
+	cin >> i;
+	if (cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+		return -1;
+	}
+	else
+	{
+		system("clear");
+		if (i == 1)
+		{
+			MainElecGas();
+		}
+		else
+		{
+			Mainmenu();
+		}
+	}
 }
 
 int Display::MainPhone() {
 
-        Attribute a;
-        int g, h ,t,month;
-        top(" Main Menu --> Phone ");
-        disviewoedit();
-        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-        cout << yellow << " \n\t\t choose an option : ";
-        cin >> h;
-        system("clear");
-        switch (h)
-       {
+	Attribute a;
+	int g, h, t, month;
+	top(" Main Menu --> Phone ");
+	disviewoedit();
+	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+	cout << yellow << " \n\t\t choose an option : ";
+	cin >> h;
+	system("clear");
+	switch (h)
+	{
 
-        case 1: // gives the total Amount of Phone Bill
-                system("clear");
-                top(" Main Menu --> Phone --> View ");
-                                cout << magenta << " \t\t Please enter the month(1to12) : ";
-                                cin >> month;
-                                cout << cyan << " \t\t Phone : " << a.GetPhone(month) << endl << endl;
-                DisGoback();
-                PhoneGoback();
-                break;
-        case 2: system("clear");
-                top(" Main Menu --> Phone --> Edit");
-                disrent(" Main Menu --> Phone ");
-                cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
-                cout << magenta << " \t\t 4. Go to Main Menu" << endl;
+	case 1: // gives the total Amount of Phone Bill
+		system("clear");
+		top(" Main Menu --> Phone --> View ");
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t Phone : " << a.GetT(month, 4) << endl << endl;
+		DisGoback();
+		PhoneGoback();
+		break;
+	case 2: system("clear");
+		top(" Main Menu --> Phone --> Edit");
+		disrent(" Main Menu --> Phone ");
+		cout << magenta << " \t\t 3. Go to Previous Menu" << endl;
+		cout << magenta << " \t\t 4. Go to Main Menu" << endl;
 
-                cout << yellow << " \n\t\t choose an option : ";
-                cin >> g;
-                // Not Yet working
-                if (cin.good() == false)
-                {
-                        cout << " \t\t Please enter an integer " << endl;
-                        cin.ignore();
-                        cin.ignore();
-                        break;
-                }
-                else
-                {
-                        system("clear");
-                        switch (g)
-                        {
+		cout << yellow << " \n\t\t choose an option : ";
+		cin >> g;
+		// Not Yet working
+		if (cin.good() == false)
+		{
+			cout << " \t\t Please enter an integer " << endl;
+			cin.ignore();
+			cin.ignore();
+			break;
+		}
+		else
+		{
+			system("clear");
+			switch (g)
+			{
 
-                        case 1: top(" Main Menu --> Phone --> Edit --> Rec "); //sets new value of rent and rec flag to 1
-                                a.ew = a.CalPhone();
-                                if (a.ew != 1)
-                                {
-                                        DisGoback();
-                                        PhoneGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
-                        case 3:
-                                MainPhone();
-                                break;
-                        case 4:
-                                Mainmenu();
-                                break;
+			case 1: top(" Main Menu --> Phone --> Edit --> Rec "); //sets new value of rent and rec flag to 1
+				a.ew = a.Cal(4);
+				if (a.ew != 1)
+				{
+					DisGoback();
+					PhoneGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 3:
+				MainPhone();
+				break;
+			case 4:
+				Mainmenu();
+				break;
 
 
-                        default:
-                                cout << " \t\t please provide an input " << endl;
-                                cin.ignore();
-                                cin.ignore();
-                                system("clear");
-                        }
-                        cin.ignore();
-                        cout << reset;
-                }
-        case 3:
-                Mainmenu();
-                break;
+			default:
+				cout << " \t\t please provide an input " << endl;
+				cin.ignore();
+				cin.ignore();
+				system("clear");
+			}
+			cin.ignore();
+			cout << reset;
+		}
+	case 3:
+		Mainmenu();
+		break;
 
-        }
+	}
 }
 
 
@@ -1093,286 +996,286 @@ int Display::MainPhone() {
 
 int Display::PhoneGoback() { // This is for go back option for Phone menu.
 
-        int i;
-        cout << yellow << " \t\t choose an option : ";
-        cin >> i;
-        if (cin.good() == false)
-        {
-                cout << " \t\t Please enter an integer " << endl;
-                cin.ignore();
-                cin.ignore();
-                return -1;
-        }
-        else
-        {
-                system("clear");
-                if (i == 1)
-                {
-                        MainPhone();
-                }
-                else
-                {
-                        Mainmenu();
-                }
-        }
+	int i;
+	cout << yellow << " \t\t choose an option : ";
+	cin >> i;
+	if (cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+		return -1;
+	}
+	else
+	{
+		system("clear");
+		if (i == 1)
+		{
+			MainPhone();
+		}
+		else
+		{
+			Mainmenu();
+		}
+	}
 }
 
 
-               
-             
+
+
 int Display::MainInsurance() {
 
-        Attribute a;
-        int g, h ,t,month;
-        top(" Main Menu --> Insurance ");
-        disviewoedit();
-        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-        cout << yellow << " \n\t\t choose an option : ";
-        cin >> h;
-        system("clear");
-        switch (h)
-        {
+	Attribute a;
+	int g, h, t, month;
+	top(" Main Menu --> Insurance ");
+	disviewoedit();
+	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+	cout << yellow << " \n\t\t choose an option : ";
+	cin >> h;
+	system("clear");
+	switch (h)
+	{
 
-        case 1: // gives the total Insurance
-                system("clear");
-                top(" Main Menu --> Insurance --> View ");
-				cout << magenta << " \t\t Please enter the month(1to12) : ";
-				cin >> month;
-				cout << cyan << " \t\t Insurance : " << a.GetInsurance(month) << endl << endl;
-                DisGoback();
-                InsuranceGoback();
-                break;
-        case 2: system("clear");
-                top(" Main Menu --> Insurance --> Edit");
-                cout << magenta << " \t\t 1. Insurance Yearly " << endl;
+	case 1: // gives the total Insurance
+		system("clear");
+		top(" Main Menu --> Insurance --> View ");
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t Insurance : " << a.GetT(month, 5) << endl << endl;
+		DisGoback();
+		InsuranceGoback();
+		break;
+	case 2: system("clear");
+		top(" Main Menu --> Insurance --> Edit");
+		cout << magenta << " \t\t 1. Insurance Yearly " << endl;
 		cout << magenta << " \t\t 2. Insurance half Yearly " << endl;
 		cout << magenta << " \t\t 3. Insurance Quarterly " << endl;
 		cout << magenta << " \t\t 4. Go to Previous Menu" << endl;
-                cout << magenta << " \t\t 5. Go to Main Menu" << endl;
+		cout << magenta << " \t\t 5. Go to Main Menu" << endl;
 
-                cout << yellow << " \n\t\t choose an option : ";
-                cin >> g;
-		 // Not Yet working
-                if (cin.good() == false)
-                {
-                        cout << " \t\t Please enter an integer " << endl;
-                        cin.ignore();
-                        cin.ignore();
-                        break;
-                }
-                else
-                {
-                        system("clear");
-                        switch (g)
-                        {
-			 case 1: top(" Main Menu --> Insurance --> Edit --> Yearly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.CalInsurance();
-                                if (a.ew != 1)
-                                {
-					 cout << magenta << " \t\t 1. Go to Insurance Page" << endl;
-        				 cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+		cout << yellow << " \n\t\t choose an option : ";
+		cin >> g;
+		// Not Yet working
+		if (cin.good() == false)
+		{
+			cout << " \t\t Please enter an integer " << endl;
+			cin.ignore();
+			cin.ignore();
+			break;
+		}
+		else
+		{
+			system("clear");
+			switch (g)
+			{
+			case 1: top(" Main Menu --> Insurance --> Edit --> Yearly "); //sets Insurance value and its duration (yearly)
+				a.ew = a.Cal(4);
+				if (a.ew != 1)
+				{
+					cout << magenta << " \t\t 1. Go to Insurance Page" << endl;
+					cout << magenta << " \t\t 2. Go to Main Menu" << endl;
 
-                                        InsuranceGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
-			 case 2: top(" Main Menu --> Insurance --> Edit --> HalfYearly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.CalInsurance();
-                                if (a.ew != 1)
-                                {
-                                         cout << magenta << " \t\t 1. Go to Insurance page" << endl;
-				        cout << magenta << " \t\t 2. Go to Main Menu" << endl;
 					InsuranceGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
-			 case 3: top(" Main Menu --> Insurance --> Edit --> Quarterly "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.CalInsurance();
-                                if (a.ew != 1)
-                                {
-                                        cout << magenta << " \t\t 1. Go to Insurance page" << endl;
-				        cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 2: top(" Main Menu --> Insurance --> Edit --> HalfYearly "); //sets Insurance value and its duration (yearly)
+				a.ew = a.Cal(5);
+				if (a.ew != 1)
+				{
+					cout << magenta << " \t\t 1. Go to Insurance page" << endl;
+					cout << magenta << " \t\t 2. Go to Main Menu" << endl;
 					InsuranceGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 3: top(" Main Menu --> Insurance --> Edit --> Quarterly "); //sets Insurance value and its duration (yearly)
+				a.ew = a.Cal(5);
+				if (a.ew != 1)
+				{
+					cout << magenta << " \t\t 1. Go to Insurance page" << endl;
+					cout << magenta << " \t\t 2. Go to Main Menu" << endl;
+					InsuranceGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
 
-                         case 4:
-                                MainInsurance();
-                                break;
-                         case 5:
-                                Mainmenu();
-                                break;
+			case 4:
+				MainInsurance();
+				break;
+			case 5:
+				Mainmenu();
+				break;
 
 
-                         default:
-                                cout << " \t\t please provide an input " << endl;
-                                cin.ignore();
-                                cin.ignore();
-                                system("clear");
-                         }
-                         cin.ignore();
-                         cout << reset;
-                }
-        case 3:
-                Mainmenu();
-                break;
+			default:
+				cout << " \t\t please provide an input " << endl;
+				cin.ignore();
+				cin.ignore();
+				system("clear");
+			}
+			cin.ignore();
+			cout << reset;
+		}
+	case 3:
+		Mainmenu();
+		break;
 
-        }
+	}
 }
 
-int Display::InsuranceGoback() { 
+int Display::InsuranceGoback() {
 
-        int i;
-        cout << yellow << " \t\t choose an option: ";
-        cin >> i;
-        if (cin.good() == false)
-        {
-                cout << " \t\t Please enter an integer " << endl;
-                cin.ignore();
-                cin.ignore();
-                return -1;
-        }
-        else
-        {
-                system("clear");
-                if (i == 1)
-                {
-                        MainInsurance();
-                }
-                else
-                {
-                        Mainmenu();
-                }
-        }
+	int i;
+	cout << yellow << " \t\t choose an option: ";
+	cin >> i;
+	if (cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+		return -1;
+	}
+	else
+	{
+		system("clear");
+		if (i == 1)
+		{
+			MainInsurance();
+		}
+		else
+		{
+			Mainmenu();
+		}
+	}
 }
 
 int Display::MainGroceries() {
 
-        Attribute a;
-        int g, h ,t,month;
-        top(" Main Menu --> Groceries ");
-        disviewoedit();
-        cout << magenta << " \t\t 3. Go to Main Menu" << endl;
-        cout << yellow << " \n\t\t choose an option : ";
-        cin >> h;
-        system("clear");
-        switch (h)
-        {
+	Attribute a;
+	int g, h, t, month;
+	top(" Main Menu --> Groceries ");
+	disviewoedit();
+	cout << magenta << " \t\t 3. Go to Main Menu" << endl;
+	cout << yellow << " \n\t\t choose an option : ";
+	cin >> h;
+	system("clear");
+	switch (h)
+	{
 
-        case 1: // gives the total Grocery
-                system("clear");
-                top(" Main Menu --> Groceries --> View ");
-				cout << magenta << " \t\t Please enter the month(1to12) : ";
-				cin >> month;
-				cout << cyan << " \t\t Groceries : " << a.GetGroceries(month) << endl << endl;
-                DisGoback();
-                GroceriesGoback();
-                break;
-        case 2: system("clear");
-                top(" Main Menu --> Groceries --> Edit ");
-                cout << magenta << " \t\t 1. Occurs Monthly " << endl;
-        	cout << magenta << " \t\t 2. NOn-Recursion  " << endl;
-                cout << magenta << " \t\t 4. Go to Previous Menu" << endl;
-                cout << magenta << " \t\t 5. Go to Main Menu" << endl;
+	case 1: // gives the total Grocery
+		system("clear");
+		top(" Main Menu --> Groceries --> View ");
+		cout << magenta << " \t\t Please enter the month(1to12) : ";
+		cin >> month;
+		cout << cyan << " \t\t Groceries : " << a.GetT(month, 6) << endl << endl;
+		DisGoback();
+		GroceriesGoback();
+		break;
+	case 2: system("clear");
+		top(" Main Menu --> Groceries --> Edit ");
+		cout << magenta << " \t\t 1. Occurs Monthly " << endl;
+		cout << magenta << " \t\t 2. NOn-Recursion  " << endl;
+		cout << magenta << " \t\t 4. Go to Previous Menu" << endl;
+		cout << magenta << " \t\t 5. Go to Main Menu" << endl;
 
-                cout << yellow << " \n\t\t choose an option : ";
-                cin >> g;
-                 // Not Yet working
-                if (cin.good() == false)
-                {
-                        cout << " \t\t Please enter an integer " << endl;
-                        cin.ignore();
-                        cin.ignore();
-                        break;
-		 }
-                 else
-                 {
-                        system("clear");
-                        switch (g)
-                        {
-                         case 1: top(" Main Menu --> Groceries --> Edit --> Rec "); //sets groceries value and its duration (yearly)
-                                a.ew = a.CalGroceries();
-                                if (a.ew != 1)
-                                {
-                                        DisGoback();
-                                        GroceriesGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
-                         case 2: top(" Main Menu --> Groceries --> Edit --> NonRec "); //sets Insurance value and its duration (yearly)
-                                a.ew = a.CalGroceries();
-                                if (a.ew != 1)
-                                {
-                                        DisGoback();
-                                        GroceriesGoback();
-                                        break;
-                                }
-                                else
-                                {
-                                        break;
-                                }
+		cout << yellow << " \n\t\t choose an option : ";
+		cin >> g;
+		// Not Yet working
+		if (cin.good() == false)
+		{
+			cout << " \t\t Please enter an integer " << endl;
+			cin.ignore();
+			cin.ignore();
+			break;
+		}
+		else
+		{
+			system("clear");
+			switch (g)
+			{
+			case 1: top(" Main Menu --> Groceries --> Edit --> Rec "); //sets groceries value and its duration (yearly)
+				a.ew = a.Cal(6);
+				if (a.ew != 1)
+				{
+					DisGoback();
+					GroceriesGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
+			case 2: top(" Main Menu --> Groceries --> Edit --> NonRec "); //sets Insurance value and its duration (yearly)
+				a.ew = a.Cal(6);
+				if (a.ew != 1)
+				{
+					DisGoback();
+					GroceriesGoback();
+					break;
+				}
+				else
+				{
+					break;
+				}
 
-                         case 3:
-                                MainGroceries();
-                                break;
-			 case 4:
-                                Mainmenu();
-                                break;
+			case 3:
+				MainGroceries();
+				break;
+			case 4:
+				Mainmenu();
+				break;
 
 
-                         default:
-                                cout << " \t\t please provide an input " << endl;
-                                cin.ignore();
-                                cin.ignore();
-                                system("clear");
-                         }
-                         cin.ignore();
-                         cout << reset;
-                }
-        case 3:
-                Mainmenu();
-                break;
+			default:
+				cout << " \t\t please provide an input " << endl;
+				cin.ignore();
+				cin.ignore();
+				system("clear");
+			}
+			cin.ignore();
+			cout << reset;
+		}
+	case 3:
+		Mainmenu();
+		break;
 
-        }
+	}
 }
 
 int Display::GroceriesGoback() {
 
-        int i;
-        cout << yellow << " \t\t choose an option: ";
-        cin >> i;
-        if (cin.good() == false)
-        {
-                cout << " \t\t Please enter an integer " << endl;
-                cin.ignore();
-                cin.ignore();
-                return -1;
-        }
-        else
-        {
-                system("clear");
-                if (i == 1)
-                {
-                        MainGroceries();
-                }
-                else
-                {
-                        Mainmenu();
-                }
-        }
+	int i;
+	cout << yellow << " \t\t choose an option: ";
+	cin >> i;
+	if (cin.good() == false)
+	{
+		cout << " \t\t Please enter an integer " << endl;
+		cin.ignore();
+		cin.ignore();
+		return -1;
+	}
+	else
+	{
+		system("clear");
+		if (i == 1)
+		{
+			MainGroceries();
+		}
+		else
+		{
+			Mainmenu();
+		}
+	}
 }
 
 
