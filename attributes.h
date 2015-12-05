@@ -10,7 +10,7 @@
 #include <limits>
 #include <map>
 using namespace std;
-
+// class used for authenticating at the start of the application
 class Auth {
 public:
 	string USERNAME;
@@ -22,7 +22,7 @@ public:
 	int Maincheck();
 };
 
-
+// class having the mathods for reading and writing a line from the txt file
 class Attribute {
 
 	string username, statement;
@@ -86,7 +86,7 @@ public:
 	double CalGroceries();
 	double CalCommute();
 	double CalMisc();
-
+// method to get a particular line in the file for reading and writing puprose
 	fstream& GotoLine(int num) {
 		infile.seekg(std::ios::beg);
 		for (int i = 0; i < num - 1; ++i) {
@@ -95,7 +95,7 @@ public:
 		return infile;
 	}
 };
-
+//class used for displaying items i.e for UI purpose
 class Display {
 public:
 	void welcome();
