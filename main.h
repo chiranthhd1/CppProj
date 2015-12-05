@@ -1,3 +1,4 @@
+// Authors Chiranth , Prasad , Sanjan
 #ifndef _MAIN2_H
 #define _MAIN2_H
 
@@ -5,39 +6,64 @@
 
 int Auth::Usepwdcheck()
 {
-	cout << green << " \t\t Enter Username : ";
-	cin >> username;
-
-
-	if (username.length() < 4)
-	{
-		cout << red << " \t\t Username length must be atleast 4 characters long." << "\n";
+//handling exception if password lenght and username lenght is less than 6 and 4 respectively also if not matched.
+        int maxchar = 10;
+        try {
+        cout << green << " \t\t Enter Username : ";
+        cin >> username;
+        if ( username.length() < 4)
+        {
+                throw "ERROR";
 	}
-	else
-	{
+ 	else if (username != USERNAME)
+        {
+                throw 1.5;
+        }
+
+ 	else {
 
 		cout << green << " \t\t Enter Password : ";
-		cin >> password;
+        	cin >> password;
+		if ( password.length() < 4)
+        	{
+                	throw "ERROR";
+        	}
 
-
-		if (password.length() < 6)
+		else if (password != PASSWORD) 
 		{
-			cout << red << " \t\t Password length must be atleast 6 character long." << "\n";
+                	throw "1.5f";
 
-		}
-	}
-	if (username == USERNAME && password == PASSWORD) {
-		return 0;
-	}
+        	}
 
-	else {
-		cout << red << " \t\t Inserted wrong userid or password try again" << "\n";
-		return 1;
+        	else {
+                	return 0;
+	     	}
 	}
 
+        if ( username.length() > maxchar || password.length() > maxchar)
+        {
+                throw 12;
+        }
+        }
 
-
+        catch(const char* Message)
+        {
+                cout << "please write the pass or username again (should be more than 4): " << Message;
+        }
+        catch(const int p)
+        {
+                cout << " Exceeds max char limit (10) ";
+        }
+	catch(const double v)
+        {
+                cout << " wrong username ";
+        }
+	catch(const float m)
+        {
+                cout << " wrong password ";
+        }
 }
+
 
 int Auth::Maincheck()
 {
@@ -646,7 +672,7 @@ int Display::MainCommute(int h) {
 	switch (h)
 	{
 
-	case 1: // this vies the value of rent
+	case 1: // this views the value of rent
 		View(" Main Menu --> View --> Commute", 7);
 		break;
 
