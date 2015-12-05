@@ -15,21 +15,22 @@ int main() {
 	Auth c;
 	a.welcome();
 	int f = 0;
-	while (f < 3)
-	{
+	//while (f < 3)
+	//{
 		c.b = c.Maincheck();
+		cin.ignore();
 		if (c.b == 0)
 		{
 
-			cin.ignore();
+		//	cin.ignore();
 			system("clear");
 			a.Mainmenu();
 		}
 		else
-		{
+		{	
+			system("clear");
 			a.welcome();
-			cout << " \t\t could not authenticate , please re run " << endl;
+			cout << " \t\t Maxmimum attemps reached !! Exiting " << endl;
+		exit(1);		
 		}
-		f++;
-	}
 }

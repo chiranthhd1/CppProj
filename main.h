@@ -8,60 +8,68 @@ int Auth::Usepwdcheck()
 {
 //handling exception if password lenght and username lenght is less than 6 and 4 respectively also if not matched.
         int maxchar = 10;
+	int f=3;
+	while (f > 0){
         try {
-        cout << green << " \t\t Enter Username : ";
-        cin >> username;
-        if ( username.length() < 4)
-        {
-                throw "ERROR";
-	}
- 	else if (username != USERNAME)
-        {
-                throw 1.5;
-        }
-
- 	else {
-
-		cout << green << " \t\t Enter Password : ";
-        	cin >> password;
-		if ( password.length() < 4)
+        	cout << green << " \t\t Enter Username :";
+        	cin >> username;
+        	if ( username.length() < 4)
         	{
                 	throw "ERROR";
+		}
+ 		else if (username != USERNAME)
+        	{
+                	throw 1.5;
         	}
 
-		else if (password != PASSWORD) 
-		{
-                	throw "1.5f";
+ 		else {
 
+			cout << green << " \t\t Enter Password : ";
+        		cin >> password;
+			if ( password.length() < 4)
+        		{
+                		throw "ERROR";
+        		}
+
+			else if (password != PASSWORD) 
+			{
+                		throw -1;
+
+        		}
+
+        		else {
+                		return 0;
+	     		     }
+		}
+
+        	if ( username.length() > maxchar || password.length() > maxchar)
+        	{
+                	throw 12;
         	}
-
-        	else {
-                	return 0;
-	     	}
-	}
-
-        if ( username.length() > maxchar || password.length() > maxchar)
-        {
-                throw 12;
-        }
         }
 
-        catch(const char* Message)
-        {
-                cout << "please write the pass or username again (should be more than 4): " << Message;
-        }
-        catch(const int p)
-        {
-                cout << " Exceeds max char limit (10) ";
-        }
-	catch(const double v)
-        {
-                cout << " wrong username ";
-        }
-	catch(const float m)
-        {
-                cout << " wrong password ";
-        }
+        	catch(const char* Message)
+        	{
+			cout << red <<  " \t\t Incorrect!! (username and password should be more than 4): " << endl;
+        	}
+        	catch(const int p)
+        	{
+                	cout << " Entered Value is too long "<< endl;
+        	}
+		catch(const double v)
+        	{
+			cout << red <<  " \t\t  Incorrect Username " << endl;
+        	}
+		catch(signed int m)
+        	{
+			cout << red <<  " \t\t  Incorrect Password" << endl;
+        	}
+		
+		f--;
+			cout <<  green << " \t\t you have " << f << "trie(s) left " << endl;
+		}
+		cin.ignore();
+		return 1;
 }
 
 

@@ -23,7 +23,7 @@ public:
 	int Maincheck();
 };
 
-// class having the mathods for reading and writing a line from the txt file
+// class having the methods for reading and writing a line from the txt file
 class Attribute {
 
 	string username, statement;
