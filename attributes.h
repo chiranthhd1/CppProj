@@ -137,8 +137,8 @@ public:
 	int MainCarLoan(int a);
 	int MainElecGas(int a);
 	int MainPhone();
-	int MainInsurance();
-	int MainGroceries();
+	int MainInsurance(int a);
+	int MainGroceries(int a);
 	int MainCommute(int a);
 	int Goback(int j);
 };
