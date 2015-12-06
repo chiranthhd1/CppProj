@@ -115,20 +115,20 @@ public:
 
 	int Mainmenu();
 	int MainRent(int a);
-	int MainCarLoan();
-	int MainElecGas();
+	int MainCarLoan(int a);
+	int MainElecGas(int a);
 	int MainPhone();
 	int MainInsurance();
 	int MainGroceries();
 	int MainCommute(int a);
 	int Goback(int j);
-	int CarLoanGoback();
-	int ElecGasGoback();
-	int PhoneGoback();
-	int InsuranceGoback();
-	int GroceriesGoback();
-	void disrentrec(string s);
-	void disrentnonrec(string s);
+	//int CarLoanGoback();
+	//int ElecGasGoback();
+	//int PhoneGoback();
+	//int InsuranceGoback();
+	//int GroceriesGoback();
+	//void disrentrec(string s);
+	//void disrentnonrec(string s);
 
 };
 
