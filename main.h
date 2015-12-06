@@ -90,14 +90,129 @@ int Auth::Maincheck()
 }
 
 
+string AttributeDB::ReadNthLine(int N)
+{
+	
+	AttributeDB db;
+	fstream in("xman.txt");
+
+        string s;
+
+	//skip N lines
+	for(int i = 1; i <= N; ++i)
+		getline(in, s);
+	
+	getline(in,s);
+	 return s;
+	
+}
+
+string AttributeDB::GetNthLine(int a, int b)	
+{
+	a= a*10+b;
+	cout << "a" << a<<endl;
+	cin.ignore();
+		
+        string s =new char[1000];
+	string e;
+	int d;
+
+        string buf; // Have a buffer string
+
+        vector<string> token; // Create vector to hold our words
+        for ( int i =0 ; i < 10; i++)
+        {
+                s = ReadNthLine( i);
+                //cout << s << endl;
+                stringstream ss(s); // Insert the string into a stream
+                while (ss >> buf)
+		{
+                
+			token.push_back(buf);
+
+                }
+        }
+ 	cout << token.at(a);       
+        return token.at(a);
+} 
+
+int AttributeDB::WriteNthLine(int a, int b)
+{
+	a= a*10+b;
+	
+        string s =new char[1000];
+	string e;
+	int d;
+
+        string buf; // Have a buffer string
+
+        vector<string> token; // Create vector to hold our words
+        for ( int i =0 ; i < 10; i++)
+        {
+                s = ReadNthLine( i);
+                cout << s << endl;
+    		stringstream ss(s); // Insert the string into a stream
+                while (ss >> buf)
+		{
+                
+			token.push_back(buf);
+
+                }
+        }
+        
+	ofstream out ("xman.txt");
+        //cout << " trying to write " << endl;
+
+        //cout << " enter the position where the value has to be changed" << endl;
+        //cin >> d;
+       // cout << "token[" <<d<<"] " << token[d]<< endl;
+       	cout << " enter the new value" << endl;
+       	cin >> e;
+        token.at(a) = e;
+        //cout << "token[22] " << token[22]<< endl;
+
+        //for (string s : token)
+        for ( vector<string> ::iterator s = token.begin(); s!= token.end(); ++s)
+	{
+                if ( *s == "/n")
+                {       out << "/n";
+                        out << "\n";
+                }
+                else
+                {
+                        out << *s;
+                        out << "\t";
+                }
+        }
+
+        //cout << " finished writing" << endl;
+        //cout << " reading after writing " << endl;
+	return 0;
+
+
+}
+
+
 
 string Attribute::GetUsername()
 {
 	return username;
 }
+string Attribute::GetValue(int a)
+{
+	string s;
+	AttributeDB db;
+//	s = db.WriteNthLine(ab);
+	return s;
+}
 
+
+	
+
+/*
 double Attribute::GetT(int a, int b)
 {
+	Attributedb db;
 	GotoLine(a);
 	infile >> rent;
 	infile >> carloan;
@@ -140,7 +255,7 @@ double Attribute::GetT(int a, int b)
 	case 8:
 		return misc;
 		break;
-		/*	case 9:
+		/c*	case 9:
 		return rent;
 		break;
 
@@ -148,12 +263,12 @@ double Attribute::GetT(int a, int b)
 		return rent;
 		break;
 
-		*/	default:
+		* /	default:
 			cout << "try again " << endl;
 			break;
 	}
 }
-
+*/
 int Attribute::GetMonth()
 {
 	Display d;
@@ -257,13 +372,13 @@ void Attribute::SetRent(int a)
 	*/
 	//	return //rent = a;
 }
-double Attribute::Cal(int a)
+/*double Attribute::Cal(int a)
 {
 	Display d;
 	double r, y;
 	int month;
 	month = GetMonth();
-	cout << magenta << " \t\t Existing value is : " << GetT(month, a) << endl;
+//	cout << magenta << " \t\t Existing value is : " << GetT(month, a) << endl;
 	cout << red << " \t\t Please enter the new value :";
 	cin >> r;
 	cout << endl << endl;
@@ -320,7 +435,7 @@ double Attribute::Cal(int a)
 
 	}
 }
-
+*/
 double Attribute::SetCarLoan(int a)
 {
 	cout << "a" << a << endl;
@@ -550,21 +665,22 @@ int Display::Menu(int a) {
 int Display::View(string a, int c) {
 
 	Attribute b;
+	AttributeDB db;
 	int month;
 	system("clear");
 	top(a);
 	month = b.GetMonth();
-	cout << cyan << " \t\t Value : " << b.GetT(month, c) << endl << endl;
+	cout << cyan << " \t\t Value : " << db.GetNthLine(month,c)  << endl << endl;
 	DisGoback();
 	Goback(1);
 }
 int Display::Add(string s, int b)
 {
 	Attribute a;
-
+	AttributeDB db;
 	top(s); //sets new value of rent and rec flag to 1
-
-	a.ew = a.Cal(b);
+	int month = a.GetMonth();
+	a.ew = db.WriteNthLine(month,b);
 	if (a.ew != 1)
 	{
 		DisGoback();

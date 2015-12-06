@@ -10,6 +10,14 @@
 #include <fstream>
 #include <limits>
 #include <map>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+#include <sstream>
+#include <cstdlib>
+
+
+
 using namespace std;
 // class used for authenticating at the start of the application
 class Auth {
@@ -31,10 +39,10 @@ class Attribute {
 	fstream infile;
 	ofstream ofile;
 
-public:
+//public:
 
 	//Attribute(double  r = 1000, double c = 400, double  e = 100, double p = 50, double  i = 800, double  g = 100, double co = 150, double  m = 400, double rf = 0, double  t = 1000) : rent(r), carloan(c), elecgas(e), phone(p), insurance(i), groceries(g), commute(co), misc(m), rflag(rf), threshold(t) {}
-	Attribute() : infile("xman.txt") {
+//	Attribute() : infile("xman.txt") {
 		/*		GotoLine(1);
 		infile >> rent;
 		infile >> carloan;
@@ -47,7 +55,7 @@ public:
 		infile >> rflag;
 		infile >> threshold;
 		*/
-	}
+//	}
 
 public:
 	double ew;
@@ -88,13 +96,26 @@ public:
 	double CalCommute();
 	double CalMisc();
 // method to get a particular line in the file for reading and writing puprose
-	fstream& GotoLine(int num) {
+/*	fstream& GotoLine(int num) {
 		infile.seekg(std::ios::beg);
 		for (int i = 0; i < num - 1; ++i) {
 			infile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 		return infile;
-	}
+	}*/
+	string GetValue(int a);
+};
+
+class AttributeDB{
+public:
+	
+	string	ReadNthLine( int N);
+	string	GetNthLine( int a,int b );
+	int 	WriteNthLine(int a,int b);
+
+
+
+
 };
 //class used for displaying items i.e for UI purpose
 class Display {
