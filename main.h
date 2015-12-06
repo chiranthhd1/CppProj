@@ -149,7 +149,6 @@ int AttributeDB::WriteNthLine(int a, int b)
         for ( int i =0 ; i < 10; i++)
         {
                 s = ReadNthLine( i);
-                cout << s << endl;
     		stringstream ss(s); // Insert the string into a stream
                 while (ss >> buf)
 		{
@@ -160,17 +159,9 @@ int AttributeDB::WriteNthLine(int a, int b)
         }
         
 	ofstream out ("xman.txt");
-        //cout << " trying to write " << endl;
-
-        //cout << " enter the position where the value has to be changed" << endl;
-        //cin >> d;
-       // cout << "token[" <<d<<"] " << token[d]<< endl;
        	cout << " enter the new value" << endl;
        	cin >> e;
         token.at(a) = e;
-        //cout << "token[22] " << token[22]<< endl;
-
-        //for (string s : token)
         for ( vector<string> ::iterator s = token.begin(); s!= token.end(); ++s)
 	{
                 if ( *s == "/n")
@@ -183,9 +174,6 @@ int AttributeDB::WriteNthLine(int a, int b)
                         out << "\t";
                 }
         }
-
-        //cout << " finished writing" << endl;
-        //cout << " reading after writing " << endl;
 	return 0;
 
 
