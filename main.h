@@ -11,7 +11,7 @@ int Auth::Usepwdcheck()
 	int f=3;
 	while (f > 0){
         try {
-        	cout << green << " \t\t Enter Username :";
+        	cout << green << " \t\t Enter Username : ";
         	cin >> username;
         	if ( username.length() < 4)
         	{
@@ -50,23 +50,23 @@ int Auth::Usepwdcheck()
 
         	catch(const char* Message)
         	{
-			cout << red <<  " \t\t Incorrect!! (username and password should be more than 4): " << endl;
+			cout << red <<  " \t\t Incorrect!! (username and password should be more than 4): " << endl<<endl;
         	}
         	catch(const int p)
         	{
-                	cout << " Entered Value is too long "<< endl;
+                	cout << " \t\t Entered Value is too long "<< endl<<endl;
         	}
 		catch(const double v)
         	{
-			cout << red <<  " \t\t  Incorrect Username " << endl;
+			cout << red <<  " \t\t  Incorrect Username " << endl<<endl;
         	}
 		catch(signed int m)
         	{
-			cout << red <<  " \t\t  Incorrect Password" << endl;
+			cout << red <<  " \t\t  Incorrect Password" << endl<<endl;
         	}
 		
 		f--;
-			cout <<  green << " \t\t you have " << f << "trie(s) left " << endl;
+			cout <<  green << " \t\t you have " << f << "trie(s) left " << endl << endl;
 		}
 		cin.ignore();
 		return 1;
