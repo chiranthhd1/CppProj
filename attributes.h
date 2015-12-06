@@ -102,15 +102,13 @@ public:
 	void welcome();
 	void top(string s);
 	void dismainmenu(string s);
-	void disrent(string s);
 	void DisGoback();
 	void disviewoedit();
 	void Time();
 
 	void ViewAdd(string s);
 	int View(string a, int c);
-	int ViewMenu();
-	int AddMenu();
+	int Menu(int a);
 	int Add(string a, int b);
 
 	int Mainmenu();
@@ -122,14 +120,6 @@ public:
 	int MainGroceries();
 	int MainCommute(int a);
 	int Goback(int j);
-	//int CarLoanGoback();
-	//int ElecGasGoback();
-	//int PhoneGoback();
-	//int InsuranceGoback();
-	//int GroceriesGoback();
-	//void disrentrec(string s);
-	//void disrentnonrec(string s);
-
 };
 
 #endif

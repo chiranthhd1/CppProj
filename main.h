@@ -400,21 +400,6 @@ void Display::dismainmenu(string s) {
 	cout << yellow << " \n\t\t choose an option : ";
 
 }
-/*
-void Display::disrent(string s) {
-	cout << magenta << " \t\t 1. Occurs Monthly " << endl;
-	cout << magenta << " \t\t 2. NOn-Recursion  " << endl;
-
-}
-
-void Display::disrentrec(string s) {
-
-}
-
-void Display::disrentnonrec(string s) {
-
-}
-*/
 
 
 void Display::disviewoedit()
@@ -436,10 +421,10 @@ int Display::Mainmenu() {
 		switch (h)
 		{
 		case 1:
-			ViewMenu();
+			Menu(h);
 			break;
 		case 2:
-			AddMenu();
+			Menu(h);
 			break;
 		default:
 			cout << " \n\n\n ";
@@ -465,7 +450,7 @@ int Display::Mainmenu() {
 	}
 }
 
-int Display::ViewMenu() {
+int Display::Menu(int a) {
 	int g, h, i;
 	char c;
 	system("clear");
@@ -477,26 +462,26 @@ int Display::ViewMenu() {
 		switch (h)
 		{
 		case 1:
-			MainRent(1);
+			MainRent(a);
 			break;
 		case 2:
-			MainCarLoan(1);
+			MainCarLoan(a);
 			break;
 	/*	case 3:
-			MainElecGas(1);
+			MainElecGas(a);
 			break;
 		case 4:
-			MainPhone(1);
+			MainPhone(a);
 			break;
 
 		case 5:
-			MainInsurance(1);
+			MainInsurance(a);
 			break;
 		case 6:
-			MainGroceries(1);
+			MainGroceries(a);
 			break; */
 		case 7:
-			MainCommute(1);
+			MainCommute(a);
 			break;
 
 		case 9:
@@ -538,85 +523,10 @@ int Display::ViewMenu() {
 		}
 
 		*/
-		system("./a");
+		system("./xman.exe");
 		//Mainmenu();
 	}
 }
-int Display::AddMenu() {
-	int g, h, i;
-	char c;
-	system("clear");
-	dismainmenu(" Main Menu --> Add ");
-
-	cin >> h;
-	if (cin.good() == true)
-	{
-		system(" clear");
-		switch (h)
-		{
-		case 1:
-			MainRent(2);
-			break;
-		case 2:
-			MainCarLoan(2);
-			break;
-	/*	case 3:
-			MainElecGas(2);
-			break;
-		case 4:
-			MainPhone(2);
-			break;
-
-		case 5:
-			MainInsurance(2);
-			break;
-		case 6:
-			MainGroceries(2);
-			break;  */
-		case 7:
-			MainCommute(2);
-			break;
-		case 9:
-			exit(1);
-		default:
-			cout << " \n\n\n ";
-			cout << cyan << " \t\t Please provide an valid input " << endl;
-			cout << cyan << " \t\t Press enter to continue " << endl;
-			cin.ignore();
-			cin.ignore();
-			Mainmenu();
-			break;
-		}
-		cin.ignore();
-		system("clear");
-	}
-	else
-	{
-		cout << endl;
-		cout << cyan << " \t\t Please enter an Integer value " << endl;
-		cout << cyan << " \t\t Press any key to continue : ";
-		cin.ignore();
-		cin.ignore();
-		cin.ignore();
-		/*	cin >> c;
-		if (c)
-		{
-		cin.ignore();
-		cin.ignore();
-		Mainmenu();
-		}
-		else
-		{
-		exit(1);
-		//		return -1;
-		}
-
-		*/
-		system("./a");
-		//Mainmenu();
-	}
-}
-
 
 int Display::View(string a, int c) {
 
@@ -747,11 +657,11 @@ int Display::Goback(int j) { // This is for go back option for all menu.
 		system("clear");
 		if (i == 1 && j == 1)
 		{
-			ViewMenu();
+			Menu(1);
 		}
 		else if (i == 1 && j == 2)
 		{
-			AddMenu();
+			Menu(2);
 		}
 		else
 		{
