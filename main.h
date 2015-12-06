@@ -3,6 +3,7 @@
 #define _MAIN2_H
 
 #include "attributes.h"
+#include <stdexcept>
 
 int Auth::Usepwdcheck()
 {
@@ -156,16 +157,23 @@ double Attribute::GetT(int a, int b)
 int Attribute::GetMonth()
 {
 	Display d;
+	int f =0;
+	while (f <3){
+	//Display d;
 	string mon;
 	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
 	cin.ignore();
+	//yint f = 0;
+	//while(f < 3){
+	try {
 	getline(cin, mon);
 	//cin >> month;
-
-	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr" || mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == "decembe") {
-		while (cin.good() == true)
-		{
-
+	if (mon != "jan" || mon != "january" || mon != "feb" || mon != "february" || mon != "mar" || mon != "march" || mon != "apr" 
+||mon != "april" || mon != "may" || mon != "jun" || mon != "june" || mon != "jul" || mon != "july" || mon != "aug" || mon != "august" || mon != "sep" || mon != "september" || mon != "oct" || mon != "october" || mon != "nov" || mon != "november" || mon != "dec" || mon != "december") {
+                throw runtime_error(" Wrong Input ");
+                }
+		
+		else{
 			map < string, int > month;
 			month["jan"] = 1;
 			month["january"] = 1;
@@ -206,18 +214,29 @@ int Attribute::GetMonth()
 			return month[mon];
 		}
 	}
-	else
+
+	catch(runtime_error & e){
+	cout << "Exception occurred please try again"<<endl;
+	cout << e.what();
+	cin.ignore(); 
+	f++;
+	//GetMonth();
+	} 
+	}
+	//}
+	d.Mainmenu();
+	
+
+
+/*	else
 	{
 		cout << " Please Try again " << endl;
 		d.Mainmenu();
-	}
+	} */
 
 }
-
-
 //void Attribute::SetUsername()
 //{
-
 //}
 void Attribute::SetRent(int a)
 {
@@ -269,7 +288,7 @@ double Attribute::Cal(int a)
 			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 			return 0;
 		case 3:
-			SetCarLoan(r);
+			SetElecGas(r);
 			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
 			return 0;
 
@@ -472,14 +491,14 @@ int Display::Menu(int a) {
 			break;
 		case 4:
 			MainPhone(a);
-			break;
+			break; */
 
 		case 5:
 			MainInsurance(a);
 			break;
 		case 6:
 			MainGroceries(a);
-			break; */
+			break; 
 		case 7:
 			MainCommute(a);
 			break;
@@ -618,7 +637,7 @@ int Display::MainCarLoan(int h) {
         switch (h)
         {
 
-        case 1: // this views the value of rent
+        case 1: // this views the value of CarLoan
                 View(" Main Menu --> View --> CarLoan", 2);
                 break;
 
@@ -638,7 +657,59 @@ int Display::MainCarLoan(int h) {
         }
 }
 
+int Display::MainInsurance(int h) {
 
+        Attribute a;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // this views the value of Insurance 
+                View(" Main Menu --> View --> Insurance", 5);
+                break;
+
+        case 2:// this changes or adds the value of rent along with rec o non rec
+                Add(" Main Menu --> Add --> Insurance", 5);
+                break;
+
+        default:
+                cout << " \t\t please provide an input " << endl;
+                cin.ignore();
+                cin.ignore();
+                system("clear");
+                cin.ignore();
+                cout << reset;
+                break;
+
+        }
+}
+
+int Display::MainGroceries(int h) {
+
+        Attribute a;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // this views the value of Groceries
+                View(" Main Menu --> View --> Groceries", 2);
+                break;
+
+        case 2:// this changes or adds the value of rent along with rec o non rec
+                Add(" Main Menu --> Add --> Groceries", 2);
+                break;
+
+        default:
+                cout << " \t\t please provide an input " << endl;
+                cin.ignore();
+                cin.ignore();
+                system("clear");
+                cin.ignore();
+                cout << reset;
+                break;
+
+        }
+}
 
 int Display::Goback(int j) { // This is for go back option for all menu.
 
