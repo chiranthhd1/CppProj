@@ -15,7 +15,7 @@
 #include <vector>
 #include <sstream>
 #include <cstdlib>
-
+#include <stdexcept>
 
 
 using namespace std;
@@ -30,6 +30,8 @@ public:
 	int Usepwdcheck();
 	int Maincheck();
 };
+
+
 
 // class having the methods for reading and writing a line from the txt file
 class Attribute {
@@ -59,50 +61,8 @@ class Attribute {
 
 public:
 	double ew;
-	string GetUsername();
-	void SetUsername();
-	void SetRent(int a);
-	double SetCarLoan(int a);
-	double SetElecGas(int a);
-	double SetPhone(int a);
-	double SetInsurance(int a);
-	double SetGroceries(int a);
-	double SetCommute(int a);
-	double SetMisc(int a);
-	double Cal(int a);
-
-
-
-	double GetRent(int a);
-	double GetCarLoan(int a);
-	double GetElecGas(int a);
-	double GetPhone(int a);
-	double GetInsurance(int a);
-	double GetGroceries(int a);
-	double GetCommute(int a);
-	double GetMisc(int a);
-	string GetStatement();
-	double GetRecFlag();
-	double GetT(int a, int b);
-
 	int GetMonth();
-
-	double CalRent();
-	double CalCarLoan();
-	double CalElecGas();
-	double CalPhone();
-	double CalInsurance();
-	double CalGroceries();
-	double CalCommute();
 	double CalMisc();
-// method to get a particular line in the file for reading and writing puprose
-/*	fstream& GotoLine(int num) {
-		infile.seekg(std::ios::beg);
-		for (int i = 0; i < num - 1; ++i) {
-			infile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-		return infile;
-	}*/
 	int GetValue(int a);
 };
 
@@ -112,9 +72,6 @@ public:
 	string	ReadNthLine( int N);
 	string	GetNthLine( int a,int b );
 	int 	WriteNthLine(int a,int b, string r);
-
-
-
 
 };
 //class used for displaying items i.e for UI purpose
@@ -126,14 +83,11 @@ public:
 	void DisGoback();
 	void disviewoedit();
 	void Time();
-
 	void ViewAdd(string s);
 	int View(string a, int c);
 	int Menu(int a, string s);
 	int Add(string a, int b);
 	int Edit(string a, int b);
-
-
 	int Mainmenu();
 	int MainRent(int a);
 	int MainCarLoan(int a);

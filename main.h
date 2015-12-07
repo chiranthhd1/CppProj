@@ -3,7 +3,6 @@
 #define _MAIN2_H
 
 #include "attributes.h"
-#include <stdexcept>
 
 int Auth::Usepwdcheck()
 {
@@ -73,7 +72,7 @@ int Auth::Usepwdcheck()
 		return 1;
 }
 
-
+// checks the above function if correct user name password is entered or not and then instructs the function in mainui.cpp function to start the app
 int Auth::Maincheck()
 {
 	a = Usepwdcheck();
@@ -89,7 +88,7 @@ int Auth::Maincheck()
 
 }
 
-
+//readsin the nth whole line into a string and sends to the respected function
 string AttributeDB::ReadNthLine(int N)
 {
 	
@@ -98,39 +97,41 @@ string AttributeDB::ReadNthLine(int N)
 
         string s;
 
-	for(int i =0; i < N; ++i)
+	for(int i =0; i < N; ++i) // skips to nth line
 		getline(in, s);
 	getline(in,s);
 	
-	return s;
+	return s; //nth line is returned
 	
 }
 
+// every line is read and ultimately whole file is read and stored in a vector
 string AttributeDB::GetNthLine(int a, int b)	
 {
-	a= (a-1)*9+(b-1);
+	a= (a-1)*9+(b-1); // sets the value to the particular position
         string s =new char[1000];
 	string e;
 	int d;
         string buf; // Have a buffer string
         vector<string> token; // Create vector to hold our words
-       token.reserve(150);
+       	token.reserve(150); // allocates 150 worth word space to the vector
         
-       	for ( int i =0 ; i < 15; i++)
+       	for ( int i =0 ; i < 15; i++) // whole file is read in and stacked up to the vector, 15 represets the max number of line
         {
-                s = ReadNthLine( i);
+                s = ReadNthLine( i); 
                 //cout << s << endl;
                 stringstream ss(s); // Insert the string into a stream
                 while (ss >> buf)
 		{
                 
-			token.push_back(buf);
+			token.push_back(buf); // words are stored in to the vector of strings named token
 
                 }
         }
-        return token.at(a);
+        return token.at(a); // returns the particular value of word stored in the vecor where a position of the word in the vector
 } 
 
+// same is above but here the particula value is changed after the whole file is read and then after the change whole file is written back
 int AttributeDB::WriteNthLine(int a, int b, string e)
 {
 	a = (a-1)*9+(b-1);
@@ -157,8 +158,8 @@ int AttributeDB::WriteNthLine(int a, int b, string e)
         token.at(a) = e;
         for ( vector<string> ::iterator s = token.begin(); s!= token.end(); ++s)
 	{
-                if ( *s == "n")
-                {       out << "n";
+                if ( *s == "n") // have set n as the end of line in my text file
+                {       out << "n"; // if end of line then \n is written so the remaining values are printed in next line just to have my txt file readable
                         out << "\n";
                 }
                 else
@@ -172,12 +173,7 @@ int AttributeDB::WriteNthLine(int a, int b, string e)
 
 }
 
-
-
-string Attribute::GetUsername()
-{
-	return username;
-}
+// used in editing a particular value. above function is called aftr asking user to specify the value to be changed and getting the confirmation
 int  Attribute::GetValue(int b)
 {
 	string s;
@@ -209,7 +205,7 @@ int  Attribute::GetValue(int b)
 }
 
 
-	
+// allows the user to type the month in string and then returns the equivalent int value of month to WriteNthLine() to do further calculation	
 int Attribute::GetMonth()
 {
 	Display d;
@@ -273,48 +269,14 @@ int Attribute::GetMonth()
 
 }
 
-double Attribute::SetCarLoan(int a)
-{
-	cout << "a" << a << endl;
-	carloan = a;
-}
-double Attribute::SetInsurance(int a)
-{
-	cout << "\t a" << a << endl;
-	insurance = a;
-}
-
-double Attribute::SetElecGas(int a)
-{
-	cout << "\t a" << a << endl;
-	elecgas = a;
-
-}
-double Attribute::SetPhone(int a)
-{
-	cout << "\t a" << a << endl;
-	phone = a;
-
-}
-
-double Attribute::SetGroceries(int a)
-{
-	cout << "\t a" << a << endl;
-	groceries = a;
-}
-
-double Attribute::SetCommute(int a)
-{
-	cout << "\t a" << a << endl;
-	groceries = a;
-}
-
+//small cool function to display real time on right side of the application
 void Display::Time()
 {
 	time_t now = time(0);
 	tm*ltm = localtime(&now);
 	cout << 1 + ltm->tm_mon << "/" << 1 + ltm->tm_mday << "/" << 1900 + ltm->tm_year << "  " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec << endl;
 }
+// Display class has been defined for the UI purpose
 
 void Display::welcome()
 {
@@ -372,13 +334,12 @@ void Display::dismainmenu(string s) {
 	cout << yellow << " \n\t\t choose an option : ";
 
 }
-
+// once the authentication has been done this function is called to start the application asking user to view,edit or add
 
 int Display::Mainmenu() {
 	int g, h, i;
 	char c;
 	system("clear");
-	//dismainmenu(" Main Menu ");
 	ViewAdd(" Main ");
 	cin >> h;
 	if (cin.good() == true)
@@ -418,7 +379,7 @@ int Display::Mainmenu() {
 		system("./a ");
 	}
 }
-
+//displays the attributes defined to user to take further actions
 int Display::Menu(int a, string s) {
 	int g, h, i;
 	char c;
@@ -481,25 +442,10 @@ int Display::Menu(int a, string s) {
 		cin.ignore();
 		cin.ignore();
 		cin.ignore();
-		/*	cin >> c;
-		if (c)
-		{
-		cin.ignore();
-		cin.ignore();
-		Mainmenu();
-		}
-		else
-		{
-		exit(1);
-		//		return -1;
-		}
-
-		*/
 		system("./xman.exe");
-		//Mainmenu();
 	}
 }
-
+// view fucntion is called when the user chooses to view a value of an attribute. this calls the getnthline() to get the value
 int Display::View(string a, int c) {
 
 	Attribute b;
@@ -507,7 +453,7 @@ int Display::View(string a, int c) {
 	int month;
 	system("clear");
 	top(a);
-	month = b.GetMonth();
+	month = b.GetMonth(); // gets the mapped intt value of monnth entered in string by user
 	cout << cyan << " \t\t Value : " << db.GetNthLine(month,c)  << endl << endl;
 	DisGoback();
 	Goback(1);
@@ -518,7 +464,7 @@ int Display::Edit(string s, int b)
 	AttributeDB db;
 	system("clear");
 	top(s); //sets new value of rent and rec flag to 1
-	a.ew = a.GetValue(b);
+	a.ew = a.GetValue(b);// getvalue returns 0 if operation is completed succesfully and 1 if unsuccesful
 	if (a.ew != 1)
 	{
 		DisGoback();
@@ -530,6 +476,7 @@ int Display::Edit(string s, int b)
 	}
 
 }
+// adds value of attributes to next month
 int Display::Add(string s, int b)
 {
 	Attribute a;
@@ -550,6 +497,7 @@ int Display::Add(string s, int b)
 	}
 
 }
+//a small function called to decide on view,add or edit 
 int Display::MainRent(int h) {
 
 	Attribute a;

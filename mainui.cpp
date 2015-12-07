@@ -3,10 +3,6 @@
 
 using namespace std;
 
-/*int Mainmenu();
-void MainRent();
-void Goback(string s);
-*/
 int main() {
 	system("clear");
 	int h, g, i;
@@ -15,22 +11,18 @@ int main() {
 	Auth c;
 	a.welcome();
 	int f = 0;
-	//while (f < 3)
-	//{
-		c.b = c.Maincheck();
-		cin.ignore();
-		if (c.b == 0)
-		{
-
-		//	cin.ignore();
-			system("clear");
-			a.Mainmenu();
-		}
-		else
-		{	
-			system("clear");
-			a.welcome();
-			cout << " \t\t Maxmimum attemps reached !! Exiting " << endl;
+	c.b = c.Maincheck();
+	cin.ignore();
+	if (c.b == 0)
+	{
+		system("clear");
+		a.Mainmenu();
+	}
+	else
+	{	
+		system("clear");
+		a.welcome();
+		cout << " \t\t Maxmimum attemps reached !! Exiting " << endl;
 		exit(1);		
-		}
+	}
 }
