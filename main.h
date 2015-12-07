@@ -98,29 +98,25 @@ string AttributeDB::ReadNthLine(int N)
 
         string s;
 
-	//skip N lines
-	for(int i = 1; i <= N; ++i)
+	for(int i =0; i < N; ++i)
 		getline(in, s);
-	
 	getline(in,s);
-	 return s;
+	
+	return s;
 	
 }
 
 string AttributeDB::GetNthLine(int a, int b)	
 {
-	a= a*10+b;
-	cout << "a" << a<<endl;
-	cin.ignore();
-		
+	a= (a-1)*9+(b-1);
         string s =new char[1000];
 	string e;
 	int d;
-
         string buf; // Have a buffer string
-
         vector<string> token; // Create vector to hold our words
-        for ( int i =0 ; i < 10; i++)
+       token.reserve(150);
+        
+       	for ( int i =0 ; i < 15; i++)
         {
                 s = ReadNthLine( i);
                 //cout << s << endl;
@@ -132,25 +128,23 @@ string AttributeDB::GetNthLine(int a, int b)
 
                 }
         }
- 	cout << token.at(a);       
         return token.at(a);
 } 
 
-int AttributeDB::WriteNthLine(int a, int b)
+int AttributeDB::WriteNthLine(int a, int b, string e)
 {
-	a= a*10+b;
-	
-        string s =new char[1000];
-	string e;
+	a = (a-1)*9+(b-1);
+        string s = new char[1000];
 	int d;
-
         string buf; // Have a buffer string
 
         vector<string> token; // Create vector to hold our words
-        for ( int i =0 ; i < 10; i++)
+	token.reserve(1500);
+        for ( int i=0; i<15 ; i++)
         {
-                s = ReadNthLine( i);
-    		stringstream ss(s); // Insert the string into a stream
+                s = ReadNthLine(i);
+    		//cout << s << endl;
+		stringstream ss(s); // Insert the string into a stream
                 while (ss >> buf)
 		{
                 
@@ -158,15 +152,13 @@ int AttributeDB::WriteNthLine(int a, int b)
 
                 }
         }
-        
+	
 	ofstream out ("xman.txt");
-       	cout << " enter the new value" << endl;
-       	cin >> e;
         token.at(a) = e;
         for ( vector<string> ::iterator s = token.begin(); s!= token.end(); ++s)
 	{
-                if ( *s == "/n")
-                {       out << "/n";
+                if ( *s == "n")
+                {       out << "n";
                         out << "\n";
                 }
                 else
@@ -186,97 +178,52 @@ string Attribute::GetUsername()
 {
 	return username;
 }
-string Attribute::GetValue(int a)
+int  Attribute::GetValue(int b)
 {
 	string s;
+	string r;
+	int y;
 	AttributeDB db;
-//	s = db.WriteNthLine(ab);
-	return s;
+	int month = GetMonth();
+	cout << magenta << " \t\t Existing value is : " << db.GetNthLine(month,b)<< endl << endl;
+	cout << red << " \t\t Please enter the new value :";
+	cin >> r;
+	cout << endl << endl;
+	cout << magenta << " \t\t 1.Yes " << endl;
+	cout << magenta << " \t\t 2.No " << endl << yellow;
+
+	cout << red << " \t\t Please confirm :";
+	cin >> y;
+	cout << endl;
+	if (y == 1)
+	{
+		db.WriteNthLine(month,b,r);
+		cout << yellow << " \t\t Selection Confirmed" << endl << endl;
+		return 0;
+	}
+	else
+	{ 
+		return 1;
+	}
+	
 }
 
 
 	
-
-/*
-double Attribute::GetT(int a, int b)
-{
-	Attributedb db;
-	GotoLine(a);
-	infile >> rent;
-	infile >> carloan;
-	infile >> elecgas;
-	infile >> phone;
-	infile >> insurance;
-	infile >> groceries;
-	infile >> commute;
-	infile >> misc;
-	infile >> rflag;
-	infile >> threshold;
-	switch (b)
-	{
-	case 1:
-		return rent;
-
-	case 2:
-		return carloan;
-		break;
-	case 3:
-		return elecgas;
-		break;
-
-	case 4:
-		return phone;
-		break;
-
-	case 5:
-		return insurance;
-		break;
-
-	case 6:
-		return groceries;
-		break;
-
-	case 7:
-		return commute;
-		break;
-
-	case 8:
-		return misc;
-		break;
-		/c*	case 9:
-		return rent;
-		break;
-
-		case 10:
-		return rent;
-		break;
-
-		* /	default:
-			cout << "try again " << endl;
-			break;
-	}
-}
-*/
 int Attribute::GetMonth()
 {
 	Display d;
-	int f =0;
-	while (f <3){
-	//Display d;
 	string mon;
 	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
 	cin.ignore();
-	//yint f = 0;
-	//while(f < 3){
-	try {
 	getline(cin, mon);
 	//cin >> month;
-	if (mon != "jan" || mon != "january" || mon != "feb" || mon != "february" || mon != "mar" || mon != "march" || mon != "apr" 
-||mon != "april" || mon != "may" || mon != "jun" || mon != "june" || mon != "jul" || mon != "july" || mon != "aug" || mon != "august" || mon != "sep" || mon != "september" || mon != "oct" || mon != "october" || mon != "nov" || mon != "november" || mon != "dec" || mon != "december") {
-                throw runtime_error(" Wrong Input ");
-                }
+	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr"||mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == "december") {
+               // throw runtime_error(" Wrong Input ");
+                
 		
-		else{
+		while ( cin.good()==true)
+		{
 			map < string, int > month;
 			month["jan"] = 1;
 			month["january"] = 1;
@@ -318,112 +265,14 @@ int Attribute::GetMonth()
 		}
 	}
 
-	catch(runtime_error & e){
-	cout << "Exception occurred please try again"<<endl;
-	cout << e.what();
-	cin.ignore(); 
-	f++;
-	//GetMonth();
-	} 
-	}
-	//}
-	d.Mainmenu();
-	
-
-
-/*	else
+	else
 	{
 		cout << " Please Try again " << endl;
 		d.Mainmenu();
-	} */
+	} 
 
 }
-//void Attribute::SetUsername()
-//{
-//}
-void Attribute::SetRent(int a)
-{
-	//cout << "a" << a << endl;
-	//Attribute c;
-	//GotoLine(a);
-	//ofile.open("xman.txt");
-	//ofile << renta;
-	/*	infile << carloan;
-	infile << elecgas;
-	infile << phone;
-	infile << insurance;
-	infile << groceries;
-	infile << commute;
-	infile << misc;
-	infile << rflag;
-	infile << threshold;
-	*/
-	//	return //rent = a;
-}
-/*double Attribute::Cal(int a)
-{
-	Display d;
-	double r, y;
-	int month;
-	month = GetMonth();
-//	cout << magenta << " \t\t Existing value is : " << GetT(month, a) << endl;
-	cout << red << " \t\t Please enter the new value :";
-	cin >> r;
-	cout << endl << endl;
-	cout << magenta << " \t\t 1.Yes " << endl;
-	cout << magenta << " \t\t 2.No " << endl << yellow;
 
-	cout << red << " \t\t Please confirm :";
-	cin >> y;
-	cout << endl;
-	if (y == 1)
-	{
-		switch (a)
-		{
-		case 1:
-			SetRent(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-
-
-		case 2:
-			SetCarLoan(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-		case 3:
-			SetElecGas(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-
-		case 4:
-			SetPhone(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-
-		case 5:
-			SetInsurance(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-
-		case 6:
-			SetGroceries(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-		case 7:
-			SetCommute(r);
-			cout << yellow << " \t\t Selection Confirmed" << endl << endl;
-			return 0;
-
-
-		}
-	}
-	else
-	{
-		return 1;
-
-	}
-}
-*/
 double Attribute::SetCarLoan(int a)
 {
 	cout << "a" << a << endl;
@@ -502,7 +351,8 @@ void Display::ViewAdd(string s)
 {
 	top(s);
 	cout << magenta << " \t\t 1. View  " << endl;
-	cout << magenta << " \t\t 2. Add  " << endl << endl;
+	cout << magenta << " \t\t 2. Edit  " << endl;
+	cout << magenta << " \t\t 3. Add  " << endl << endl;
 	cout << magenta << " \t\t Choice : ";
 
 }
@@ -524,12 +374,6 @@ void Display::dismainmenu(string s) {
 }
 
 
-void Display::disviewoedit()
-{
-	cout << magenta << " \t\t 1. View " << endl;
-	cout << magenta << " \t\t 2. edit " << endl;
-
-}
 int Display::Mainmenu() {
 	int g, h, i;
 	char c;
@@ -543,10 +387,13 @@ int Display::Mainmenu() {
 		switch (h)
 		{
 		case 1:
-			Menu(h);
+			Menu(h,"view");
 			break;
 		case 2:
-			Menu(h);
+			Menu(h,"edit");
+			break;
+		case 3:
+			Menu(h,"add");
 			break;
 		default:
 			cout << " \n\n\n ";
@@ -572,11 +419,11 @@ int Display::Mainmenu() {
 	}
 }
 
-int Display::Menu(int a) {
+int Display::Menu(int a, string s) {
 	int g, h, i;
 	char c;
 	system("clear");
-	dismainmenu(" Main Menu --> View ");
+	dismainmenu(" Main Menu --> "+ s);
 	cin >> h;
 	if (cin.good() == true)
 	{
@@ -589,12 +436,12 @@ int Display::Menu(int a) {
 		case 2:
 			MainCarLoan(a);
 			break;
-	/*	case 3:
+		case 3:
 			MainElecGas(a);
 			break;
 		case 4:
 			MainPhone(a);
-			break; */
+			break; 
 
 		case 5:
 			MainInsurance(a);
@@ -604,6 +451,9 @@ int Display::Menu(int a) {
 			break; 
 		case 7:
 			MainCommute(a);
+			break;
+		case 8:
+			MainMisc(a);
 			break;
 
 		case 9:
@@ -662,13 +512,33 @@ int Display::View(string a, int c) {
 	DisGoback();
 	Goback(1);
 }
+int Display::Edit(string s, int b)
+{
+	Attribute a;
+	AttributeDB db;
+	system("clear");
+	top(s); //sets new value of rent and rec flag to 1
+	a.ew = a.GetValue(b);
+	if (a.ew != 1)
+	{
+		DisGoback();
+		Goback(2);
+	}
+	else
+	{
+		Mainmenu();
+	}
+
+}
 int Display::Add(string s, int b)
 {
 	Attribute a;
 	AttributeDB db;
+	system("clear");
 	top(s); //sets new value of rent and rec flag to 1
-	int month = a.GetMonth();
-	a.ew = db.WriteNthLine(month,b);
+	//int month = a.GetMonth();
+	//a.ew = db.WriteNthLine(month,b);
+	a.ew = a.GetValue(b);
 	if (a.ew != 1)
 	{
 		DisGoback();
@@ -692,6 +562,11 @@ int Display::MainRent(int h) {
 		break;
 
 	case 2:// this changes or adds the value of rent along with rec o non rec
+		Edit(" Main Menu --> Edit --> Rent", 1);
+		break;
+
+
+	case 3:// this changes or adds the value of rent along with rec o non rec
 		Add(" Main Menu --> Add --> Rent", 1);
 		break;
 
@@ -719,7 +594,7 @@ int Display::MainCommute(int h) {
 		break;
 
 	case 2:// this changes or adds the value of rent along with rec o non rec
-		Add(" Main Menu --> Add --> Commute", 7);
+		Edit(" Main Menu --> Edit --> Commute", 7);
 		break;
 
 	default:
@@ -746,7 +621,7 @@ int Display::MainCarLoan(int h) {
                 break;
 
         case 2:// this changes or adds the value of rent along with rec o non rec
-                Add(" Main Menu --> Add --> CarLoan", 2);
+                Edit(" Main Menu --> Edit --> CarLoan", 2);
                 break;
 
         default:
@@ -773,7 +648,7 @@ int Display::MainInsurance(int h) {
                 break;
 
         case 2:// this changes or adds the value of rent along with rec o non rec
-                Add(" Main Menu --> Add --> Insurance", 5);
+                Edit(" Main Menu --> Edit --> Insurance", 5);
                 break;
 
         default:
@@ -796,11 +671,63 @@ int Display::MainGroceries(int h) {
         {
 
         case 1: // this views the value of Groceries
-                View(" Main Menu --> View --> Groceries", 2);
+                View(" Main Menu --> View --> Groceries", 6);
                 break;
 
         case 2:// this changes or adds the value of rent along with rec o non rec
-                Add(" Main Menu --> Add --> Groceries", 2);
+                Edit(" Main Menu --> Edit --> Groceries", 6);
+                break;
+
+        default:
+                cout << " \t\t please provide an input " << endl;
+                cin.ignore();
+                cin.ignore();
+                system("clear");
+                cin.ignore();
+                cout << reset;
+                break;
+
+        }
+}
+int Display::MainElecGas(int h) {
+
+        Attribute a;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // this views the value of Groceries
+                View(" Main Menu --> View --> Electricity and Gas", 3);
+                break;
+
+        case 2:// this changes or adds the value of rent along with rec o non rec
+                Edit(" Main Menu --> Edit --> Electricity and Gas", 3);
+                break;
+
+        default:
+                cout << " \t\t please provide an input " << endl;
+                cin.ignore();
+                cin.ignore();
+                system("clear");
+                cin.ignore();
+                cout << reset;
+                break;
+
+        }
+}
+int Display::MainPhone(int h) {
+
+        Attribute a;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // this views the value of Groceries
+                View(" Main Menu --> View --> Phone", 4);
+                break;
+
+        case 2:// this changes or adds the value of rent along with rec o non rec
+                Edit(" Main Menu --> Edit--> Phone", 4);
                 break;
 
         default:
@@ -815,6 +742,32 @@ int Display::MainGroceries(int h) {
         }
 }
 
+int Display::MainMisc(int h) {
+
+        Attribute a;
+        system("clear");
+        switch (h)
+        {
+
+        case 1: // this views the value of Groceries
+                View(" Main Menu --> View --> Misc", 8);
+                break;
+
+        case 2:// this changes or adds the value of rent along with rec o non rec
+                Edit(" Main Menu --> Edit--> Misc", 8);
+                break;
+
+        default:
+                cout << " \t\t please provide an input " << endl;
+                cin.ignore();
+                cin.ignore();
+                system("clear");
+                cin.ignore();
+                cout << reset;
+                break;
+	}
+}
+    
 int Display::Goback(int j) { // This is for go back option for all menu.
 
 	int i;
@@ -832,12 +785,17 @@ int Display::Goback(int j) { // This is for go back option for all menu.
 		system("clear");
 		if (i == 1 && j == 1)
 		{
-			Menu(1);
+			Menu(1," View");
 		}
 		else if (i == 1 && j == 2)
 		{
-			Menu(2);
+			Menu(2," Edit");
 		}
+		else if (i == 1 && j == 2)
+		{
+			Menu(3," Add");
+		}
+	
 		else
 		{
 			Mainmenu();

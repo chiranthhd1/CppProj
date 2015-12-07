@@ -103,7 +103,7 @@ public:
 		}
 		return infile;
 	}*/
-	string GetValue(int a);
+	int GetValue(int a);
 };
 
 class AttributeDB{
@@ -111,7 +111,7 @@ public:
 	
 	string	ReadNthLine( int N);
 	string	GetNthLine( int a,int b );
-	int 	WriteNthLine(int a,int b);
+	int 	WriteNthLine(int a,int b, string r);
 
 
 
@@ -129,17 +129,20 @@ public:
 
 	void ViewAdd(string s);
 	int View(string a, int c);
-	int Menu(int a);
+	int Menu(int a, string s);
 	int Add(string a, int b);
+	int Edit(string a, int b);
+
 
 	int Mainmenu();
 	int MainRent(int a);
 	int MainCarLoan(int a);
 	int MainElecGas(int a);
-	int MainPhone();
+	int MainPhone(int a);
 	int MainInsurance(int a);
 	int MainGroceries(int a);
 	int MainCommute(int a);
+	int MainMisc(int h);
 	int Goback(int j);
 };
 
