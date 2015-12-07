@@ -209,17 +209,24 @@ int  Attribute::GetValue(int b)
 int Attribute::GetMonth()
 {
 	Display d;
+	int f=0;
+	while (f < 3)
+	{
+	try {
 	string mon;
 	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
 	cin.ignore();
 	getline(cin, mon);
 	//cin >> month;
-	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr"||mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == "december") {
-               // throw runtime_error(" Wrong Input ");
-                
-		
-		while ( cin.good()==true)
-		{
+
+	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr" || 
+mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || 
+mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == 
+"december"){
+					
+			while (cin.good() == true)
+			{
+
 			map < string, int > month;
 			month["jan"] = 1;
 			month["january"] = 1;
@@ -258,15 +265,22 @@ int Attribute::GetMonth()
 
 
 			return month[mon];
+			}
 		}
+		else {
+			throw runtime_error(" \t\t\t\t Press Enter to try again \n ");
+		     }
+		}
+
+		catch (runtime_error & e)
+                      {
+                        cout << yellow << " \t\t Exception occurred Please enter correct value ... Exiting"<<endl;
+                        cout << e.what();
+                        cin.ignore();
+			d.Mainmenu();
+                      }
+			f++;
 	}
-
-	else
-	{
-		cout << " Please Try again " << endl;
-		d.Mainmenu();
-	} 
-
 }
 
 //small cool function to display real time on right side of the application
