@@ -114,15 +114,15 @@ string AttributeDB::ReadNthLine(int N)
 // every line is read and ultimately whole file is read and stored in a vector
 string AttributeDB::GetNthLine(int a, int b)	
 {
-	a= (a-1)*9+(b-1); // sets the value to the particular position
+	a= (a-1)*9+(b-1); // sets the value to the particular position( inspired by bitmap assignment)
         string s =new char[1000];
 	string e;
 	int d;
         string buf; // Have a buffer string
         vector<string> token; // Create vector to hold our words
-       	token.reserve(150); // allocates 150 worth word space to the vector
+       	token.reserve(350); // allocates 150 worth word space to the vector
         
-       	for ( int i =0 ; i < 15; i++) // whole file is read in and stacked up to the vector, 15 represets the max number of line
+       	for ( int i =0 ; i < 35; i++) // whole file is read in and stacked up to the vector, 35 represets the max number of line
         {
                 s = ReadNthLine( i); 
                 //cout << s << endl;
@@ -147,7 +147,7 @@ int AttributeDB::WriteNthLine(int a, int b, string e)
 
         vector<string> token; // Create vector to hold our words
 	token.reserve(1500);
-        for ( int i=0; i<15 ; i++)
+        for ( int i=0; i<35 ; i++)
         {
                 s = ReadNthLine(i);
     		//cout << s << endl;
@@ -220,54 +220,111 @@ int Attribute::GetMonth()
 	{
 	try {
 	string mon;
-	cout << magenta << " \t\t Please enter the month(eg: january or jan) : ";
+	cout << magenta << " \t Please enter the month(eg: march14 or mar14 for 2014 and mar15 '15 and mar16 for '16 ) : ";
 	cin.ignore();
 	getline(cin, mon);
 	//cin >> month;
 
-	if (mon == "jan" || mon == "january" || mon == "feb" || mon == "february" || mon == "mar" || mon == "march" || mon == "apr" || 
-mon == "april" || mon == "may" || mon == "jun" || mon == "june" || mon == "jul" || mon == "july" || mon == "aug" || mon == "august" || 
-mon == "sep" || mon == "september" || mon == "oct" || mon == "october" || mon == "nov" || mon == "november" || mon == "dec" || mon == 
-"december"){
+	if (mon == "jan14" || mon == "january14" || mon == "feb14" || mon == "february14" || mon == "mar14" || mon == "march14" || mon == "apr14" || 
+mon == "april14" || mon == "may14" || mon == "jun14" || mon == "june14" || mon == "jul14" || mon == "july14" || mon == "aug14" || mon == "august14" || 
+mon == "sep14" || mon == "september14" || mon == "oct14" || mon == "october14" || mon == "nov14" || mon == "november14" || mon == "dec14" || mon == 
+"december14"|| mon == "jan15" || mon == "january15" || mon == "feb15" || mon == "february15" || mon == "mar15" || mon == "march15" || mon == "apr15" || 
+mon == "april15" || mon == "may15" || mon == "jun15" || mon == "june15" || mon == "jul15" || mon == "july15" || mon == "aug15" || mon == "august15" || 
+mon == "sep15" || mon == "september15" || mon == "oct15" || mon == "october15" || mon == "nov15" || mon == "november15" || mon == "dec15" || mon == 
+"december15" || mon == "jan16" || mon == "january16" || mon == "feb16" || mon == "february16" || mon == "mar16" || mon == "march16" || mon == "apr16" || 
+mon == "april16" || mon == "may16" || mon == "jun16" || mon == "june16")
+	{
 					
 			while (cin.good() == true)
 			{
 
 			map < string, int > month;
-			month["jan"] = 1;
-			month["january"] = 1;
+			month["jan14"] = 1;
+			month["january14"] = 1;
 
-			month["feb"] = 2;
-			month["february"] = 2;
+			month["feb14"] = 2;
+			month["february14"] = 2;
 
-			month["mar"] = 3;
-			month["march"] = 3;
+			month["mar14"] = 3;
+			month["march14"] = 3;
 
-			month["apr"] = 4;
-			month["april"] = 4;
+			month["apr14"] = 4;
+			month["april14"] = 4;
 
-			month["may"] = 5;
+			month["may14"] = 5;
 
-			month["jun"] = 6;
-			month["june"] = 6;
+			month["jun14"] = 6;
+			month["june14"] = 6;
 
-			month["jul"] = 7;
-			month["july"] = 7;
+			month["jul14"] = 7;
+			month["july14"] = 7;
 
-			month["aug"] = 8;
-			month["august"] = 8;
+			month["aug14"] = 8;
+			month["august14"] = 8;
 
-			month["sep"] = 9;
-			month["september"] = 9;
+			month["sep14"] = 9;
+			month["september14"] = 9;
 
-			month["oct"] = 10;
-			month["october"] = 10;
+			month["oct14"] = 10;
+			month["october14"] = 10;
 
-			month["nov"] = 11;
-			month["november"] = 11;
+			month["nov14"] = 11;
+			month["november14"] = 11;
 
-			month["dec"] = 12;
-			month["december"] = 12;
+			month["dec14"] = 12;
+			month["december14"] = 12;
+
+			month["jan15"] = 13;
+			month["january15"] = 13;
+
+			month["feb15"] = 14;
+			month["february15"] = 14;
+
+			month["mar15"] = 15;
+			month["march15"] = 15;
+
+			month["apr15"] = 16;
+			month["april15"] = 16;
+
+			month["may15"] = 17;
+
+			month["jun15"] = 18;
+			month["june15"] = 18;
+
+			month["jul15"] = 19;
+			month["july15"] = 19;
+
+			month["aug15"] = 20;
+			month["august15"] = 20;
+
+			month["sep15"] = 21;
+			month["september15"] = 21;
+
+			month["oct15"] = 22;
+			month["october15"] = 22;
+
+			month["nov15"] = 23;
+			month["november15"] = 23;
+
+			month["dec15"] = 24;
+			month["december15"] = 24;
+
+			month["jan16"] = 25;
+			month["january16"] = 25;
+
+			month["feb16"] = 26;
+			month["february15"] = 26;
+
+			month["mar16"] = 27;
+			month["march16"] = 27;
+
+			month["apr16"] = 28;
+			month["april6"] = 28;
+
+			month["may16"] = 29;
+
+			month["jun16"] = 30;
+			month["june16"] = 30;
 
 
 			return month[mon];
@@ -368,13 +425,13 @@ int Display::Mainmenu() {
 		switch (h)
 		{
 		case 1:
-			Menu(h,"view");
+			Menu(h," View ");
 			break;
 		case 2:
-			Menu(h,"edit");
+			Menu(h," Edit ");
 			break;
 		case 3:
-			Menu(h,"add");
+			Menu(h," Add ");
 			break;
 		default:
 			cout << " \n\n\n ";
@@ -753,7 +810,7 @@ int Display::Goback(int j) { // This is for go back option for all menu.
 		system("clear");
 		if (i == 1 && j == 1)
 		{
-			Menu(1," View");
+			Menu(1," View ");
 		}
 		else if (i == 1 && j == 2)
 		{
@@ -761,7 +818,7 @@ int Display::Goback(int j) { // This is for go back option for all menu.
 		}
 		else if (i == 1 && j == 2)
 		{
-			Menu(3," Add");
+			Menu(3," Add ");
 		}
 	
 		else
