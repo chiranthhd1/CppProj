@@ -9,7 +9,11 @@ int main() {
 	string menu;
 	Display a;
 	Auth c;
-	a.welcome();
+	a.StartDisp();
+	cin.ignore();
+	system("clear");
+	//a.welcome();
+	a.top (" Login ");
 	int f = 0;
 	c.b = c.Maincheck();
 	cin.ignore();
@@ -21,7 +25,8 @@ int main() {
 	else
 	{	
 		system("clear");
-		a.welcome();
+		//a.welcome();
+		a.top ( " Login " );
 		cout << " \t\t Maxmimum attemps reached !! Exiting " << endl;
 		exit(1);		
 	}

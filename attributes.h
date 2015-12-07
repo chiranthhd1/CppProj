@@ -78,6 +78,7 @@ public:
 class Display {
 public:
 	void welcome();
+	void StartDisp();
 	void top(string s);
 	void dismainmenu(string s);
 	void DisGoback();
