@@ -489,7 +489,7 @@ int Display::Mainmenu() {
 			Menu(h," Edit ");
 			break;
 		case 3:
-			Menu(h," Add ");
+			Add (" Add ");
 			break;
 		case 4:
 			Statement();
@@ -617,6 +617,7 @@ int Display::Edit(string s, int b)
 	}
 
 }
+/*
 // adds value of attributes to next month
 int Display::Add(string s, int b)
 {
@@ -637,6 +638,51 @@ int Display::Add(string s, int b)
 		Mainmenu();
 	}
 
+}*/
+
+
+// adds value of attributes to next month
+int Display::Add(string s)
+{
+        Attribute a;
+        AttributeDB db;
+        system("clear");
+        top(s); //sets new value of rent and rec flag to 1
+        int month = a.GetMonth();
+        int g;
+        //a.ew = db.WriteNthLine(month,b);
+
+        string s1 = "c Rent CarLoan ElectricityGas Phone Insurance Groceries Commute Misc ";
+        string buf2;
+        string e;
+        stringstream ss1(s1);
+        vector <string> r;
+        while ( ss1 >> buf2)
+        {
+                r.push_back(buf2);
+        }
+        for ( int i=1; i <9 ; i++)
+        {
+                cout << yellow << " \t\t Enter the value for "<<r.at(i)<<" : ";
+                cin >> e;
+                db.WriteNthLine(month,i,e);
+                cout << endl;
+                cout << " \t\t Value " << e << " has been added " << endl;
+        }
+
+        //if (a.ew != 1)
+        //{
+        DisGoback();
+        cin >>g;
+        if( g==1)
+        {
+                Goback(2);
+        }
+        else
+        {
+                Mainmenu();
+        }
+
 }
 //a small function called to decide on view,add or edit 
 int Display::MainRent(int h) {
@@ -654,11 +700,11 @@ int Display::MainRent(int h) {
 		Edit(" Main Menu --> Edit --> Rent", 1);
 		break;
 
-
+/*
 	case 3:// this changes or adds the value of rent along with rec o non rec
 		Add(" Main Menu --> Add --> Rent", 1);
 		break;
-
+*/
 	default:
 		cout << " \t\t please provide an input " << endl;
 		cin.ignore();

@@ -88,7 +88,7 @@ public:
 	void Statement();
 	int View(string a, int c);
 	int Menu(int a, string s);
-	int Add(string a, int b);
+	int Add(string a);
 	int Edit(string a, int b);
 	int Mainmenu();
 	int MainRent(int a);
