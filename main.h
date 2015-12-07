@@ -391,7 +391,8 @@ void Display::ViewAdd(string s)
 	top(s);
 	cout << magenta << " \t\t 1. View  " << endl;
 	cout << magenta << " \t\t 2. Edit  " << endl;
-	cout << magenta << " \t\t 3. Add  " << endl << endl;
+	cout << magenta << " \t\t 3. Add  " << endl;
+	cout << magenta << " \t\t 4. Statement " << endl << endl;
 	cout << magenta << " \t\t Choice : ";
 
 }
@@ -413,6 +414,42 @@ void Display::dismainmenu(string s) {
 }
 // once the authentication has been done this function is called to start the application asking user to view,edit or add
 
+void Display :: Statement()
+{
+        int mon;
+        Attribute a;
+        AttributeDB db;
+        top( " Statement " );
+        mon =  a.GetMonth();
+        string s = new char[10000];
+        //string sum;
+        string buf1;
+        int sum = 0;
+        int hu;
+        vector <string> statement;
+        statement.reserve(1555);
+                s = db.ReadNthLine(mon-1);
+                stringstream ss(s); // Insert the string into a stream
+                while (ss >> buf1)
+                {
+
+                        statement.push_back(buf1);
+
+                }
+
+
+        for ( int i=0 ; i <8; i++)
+        {
+        stringstream convert(statement.at(i));
+                convert >> hu;
+                sum=sum+hu;
+        }
+        cout << " total expenditure for this month is  " << sum << endl;
+
+
+
+}
+
 int Display::Mainmenu() {
 	int g, h, i;
 	char c;
@@ -432,6 +469,9 @@ int Display::Mainmenu() {
 			break;
 		case 3:
 			Menu(h," Add ");
+			break;
+		case 4:
+			Statement();
 			break;
 		default:
 			cout << " \n\n\n ";
