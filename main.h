@@ -392,7 +392,8 @@ void Display::ViewAdd(string s)
 	cout << magenta << " \t\t 1. View  " << endl;
 	cout << magenta << " \t\t 2. Edit  " << endl;
 	cout << magenta << " \t\t 3. Add  " << endl;
-	cout << magenta << " \t\t 4. Statement " << endl << endl;
+	cout << magenta << " \t\t 4. Statement " << endl;
+	cout << magenta << " \t\t 5. Exit " << endl << endl;
 	cout << magenta << " \t\t Choice : ";
 
 }
@@ -435,17 +436,37 @@ void Display :: Statement()
 
                         statement.push_back(buf1);
 
-                }
+               }
 
 
-        for ( int i=0 ; i <8; i++)
+	string s1 = "Rent CarLoan ElectricityGas Phone Insurance Groceries Commute Misc ";
+        string buf2;
+        stringstream ss1(s1);
+        vector <string> r;
+        while ( ss1 >> buf2)
+	{
+		r.push_back(buf2);
+	}
+	
+	for ( int i=0 ; i <8; i++)
         {
         stringstream convert(statement.at(i));
                 convert >> hu;
+		if (r.at(i) == "Rent" || r.at(i) == "Phone" || r.at(i) == "Misc")
+		{
+			cout << yellow << " \t\t "<< r.at(i) << "\t\t\t\t\t : "<< hu << endl;
+		}
+		else
+		{
+			cout << yellow << " \t\t "<< r.at(i) << "\t\t\t\t : "<< hu << endl;
+	
+		}
                 sum=sum+hu;
         }
-        cout << " total expenditure for this month is  " << sum << endl;
-
+	cout << endl;
+        cout << cyan << " \t\t Total expenditure for this month is  \t : " << sum << endl;
+	cin.ignore();
+	Mainmenu();
 
 
 }
@@ -472,6 +493,9 @@ int Display::Mainmenu() {
 			break;
 		case 4:
 			Statement();
+			break;
+		case 5:
+			exit(1);
 			break;
 		default:
 			cout << " \n\n\n ";
