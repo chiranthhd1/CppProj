@@ -64,6 +64,7 @@ public:
 	int GetMonth();
 	double CalMisc();
 	int GetValue(int a);
+	int CurrencyConv(string s);
 };
 
 class AttributeDB{

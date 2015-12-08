@@ -427,6 +427,7 @@ void Display :: Statement(string str)
         string buf1;
         int sum = 0;
         int hu;
+	int number;
         vector <string> statement;
         statement.reserve(1555);
                 s = db.ReadNthLine(mon-1);
@@ -450,7 +451,7 @@ void Display :: Statement(string str)
 	
 	for ( int i=0 ; i <8; i++)
         {
-        stringstream convert(statement.at(i));
+        stringstream convert(statement.at(i));// convert function is used to convert a string present in i to int.
                 convert >> hu;
 		if (r.at(i) == "Rent" || r.at(i) == "Phone" || r.at(i) == "Misc")
 		{
@@ -464,9 +465,17 @@ void Display :: Statement(string str)
                 sum=sum+hu;
         }
 	cout << endl;
-        cout << cyan << " \t\t Total expenditure for this month is  \t : " << sum << endl;
+        cout << cyan << " \t\tTotal expenditure for this month is ($)\t : " << sum << endl;
 	cin.ignore();
-	//Mainmenu();
+	string Result;          // string which will contain the result
+
+	ostringstream convert;   // stream used for the conversion
+
+	convert << sum;
+	Result = convert.str();
+	a.CurrencyConv(Result);
+	cin.ignore();
+	cin.ignore();
 	DisGoback();
 	Goback(4);
 
@@ -593,11 +602,17 @@ int Display::View(string a, int c) {
 
 	Attribute b;
 	AttributeDB db;
+	string Nth;
 	int month;
 	system("clear");
 	top(a);
 	month = b.GetMonth(); // gets the mapped intt value of monnth entered in string by user
-	cout << cyan << " \t\t Value : " << db.GetNthLine(month,c)  << endl << endl;
+	Nth = db.GetNthLine(month,c);
+	cout << cyan << " \t\t Value ($): " << Nth << endl << endl;
+	//cout << cyan << " \t\t Value : " << db.GetNthLine(month,c)  << endl << endl;
+	b.CurrencyConv(Nth);
+	cin.ignore();
+	cin.ignore();
 	DisGoback();
 	Goback(1);
 }
@@ -626,7 +641,7 @@ int Display::Add(string s)
         AttributeDB db;
         system("clear");
         top(s); //sets new value of rent and rec flag to 1
-        int month = a.GetMonth();
+       	int month = a.GetMonth();
         int g;
         //a.ew = db.WriteNthLine(month,b);
 
@@ -869,6 +884,18 @@ int Display::MainMisc(int h) {
                 cout << reset;
                 break;
 	}
+}
+
+int Attribute::CurrencyConv(string s)
+{
+	int v,c;
+	cout << " \t\t Please enter the conversion rate \t : ";
+	cin >> c;
+	stringstream convert(s);// convert function is used to convert a string present in i to int.
+        convert >> v;
+	cout << " \t\t Converted value is \t :"<< c*v<<endl;
+	cin.ignore();
+	return 0;
 }
     
 int Display::Goback(int j) { // This is for go back option for all menu.
