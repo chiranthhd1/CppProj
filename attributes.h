@@ -85,7 +85,7 @@ public:
 	void disviewoedit();
 	void Time();
 	void ViewAdd(string s);
-	void Statement();
+	void Statement(string s);
 	int View(string a, int c);
 	int Menu(int a, string s);
 	int Add(string a);
