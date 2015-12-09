@@ -49,7 +49,7 @@ int Auth::Usepwdcheck()
 
         	if ( username.length() > maxchar || password.length() > maxchar)
         	{
-                	throw 12;
+                	throw 1.0f;
         	}
         }
 
@@ -57,7 +57,7 @@ int Auth::Usepwdcheck()
         	{
 			cout << red <<  " \t\t Incorrect!! (username and password should be more than 4): " << endl<<endl;
         	}
-        	catch(const int p)
+        	catch(const float p)
         	{
                 	cout << " \t\t Entered Value is too long "<< endl<<endl;
         	}
