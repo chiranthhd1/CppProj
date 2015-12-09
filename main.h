@@ -466,7 +466,6 @@ void Display :: Statement(string str)
         }
 	cout << endl;
         cout << cyan << " \t\tTotal expenditure for this month is ($)\t : " << sum << endl;
-	cin.ignore();
 	string Result;          // string which will contain the result
 
 	ostringstream convert;   // stream used for the conversion
@@ -474,8 +473,6 @@ void Display :: Statement(string str)
 	convert << sum;
 	Result = convert.str();
 	a.CurrencyConv(Result);
-	cin.ignore();
-	cin.ignore();
 	DisGoback();
 	Goback(4);
 
@@ -611,8 +608,6 @@ int Display::View(string a, int c) {
 	cout << cyan << " \t\t Value ($): " << Nth << endl << endl;
 	//cout << cyan << " \t\t Value : " << db.GetNthLine(month,c)  << endl << endl;
 	b.CurrencyConv(Nth);
-	cin.ignore();
-	cin.ignore();
 	DisGoback();
 	Goback(1);
 }
@@ -889,11 +884,11 @@ int Display::MainMisc(int h) {
 int Attribute::CurrencyConv(string s)
 {
 	int v,c;
-	cout << " \t\t Please enter the conversion rate \t : ";
+	cout << " \t\tPlease enter the conversion rate \t : ";
 	cin >> c;
 	stringstream convert(s);// convert function is used to convert a string present in i to int.
         convert >> v;
-	cout << " \t\t Converted value is \t :"<< c*v<<endl;
+	cout << " \t\tConverted value is \t\t\t : "<< c*v<<endl;
 	cin.ignore();
 	return 0;
 }
